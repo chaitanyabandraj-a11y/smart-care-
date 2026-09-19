@@ -1,113 +1,74 @@
-﻿# SmartCare Healthcare Coordination Platform
-
+**﻿SmartCare Healthcare Coordination Platform**
 > Decentralized Multi-Hospital Emergency Coordination & Digital OPD Management System
+For academic/prototype use
 
-## Prototype v1.0 | September 2026
 
----
+**FOR ADMIN'S LOGIN HOSPITAL-WISE**
 
-## Overview
+HOSPITALS        ADMINS IDS                  PASSWORD
+APOLLO           ADMIN-APOLLO-01             Apollo@2026
+LOKNAYAK         ADMIN-LOKNAYAK-02           LokNayak@2026
+AIIMS            ADMIN-AIIMS-03              Aiims@2026
+FORTIS           ADMIN-FORTIS-04             Fortis@2026
+MAX              ADMIN-MAX-05                Max@2026
 
-SmartCare is a full-stack, real-time healthcare coordination platform integrating **five modules**:
 
-| Module | Role |
-|--------|------|
-| Hospital Admin | Bed management, doctor roster, emergency alerts |
-| Emergency SOS | 2-minute sequential hospital routing algorithm |
-| Ambulance Driver | GPS cockpit, dispatch management |
-| Patient OPD | UHID registration, ORS booking wizard, virtual queue |
-| Doctor Portal | Chamber desk, digital prescriptions, duty schedule |
+**FOR DRIVER'S LOGIN HOSPITAL-WISE**
 
----
+DRIVERS IDS                PASSWORD
+DRV-APOLLO-01-10           Driver@123
+DRV-AIIMS-01-10            Driver@123
+DRV-FORTIS-01-10           Driver@123
+DRV-MAX-01-10              Driver@123
+DRV-LOKNAYAK-01-10         Driver@123
 
-## Tech Stack
 
-- **Frontend**: Vite + React (JSX), Vanilla CSS, Lucide-react, Socket.IO-client, qrcode
-- **Backend**: Node.js + Express.js, Socket.IO
-- **Database**: SQLite (opd.db + emergency.db)
-- **Real-Time**: Socket.IO with room-based isolation
+**FOR DOCTOR'S LOGIN HOSPITAL-WISE, DEPARTMENT WISE**
+ Doctor Portal Login
+ 
+ Hospital select → Doctor ID → Password
 
----
+🔵 **AIIMS New Delhi**
+Doctor ID	        Doctor Name             	Department            	Password
+DOC-AIIMS-01	    Dr. Arvind Gupta	        Cardiology	            Doctor@123
+DOC-AIIMS-02	    Dr. Meenakshi Sundaram	    General Medicine    	Doctor@123
+DOC-AIIMS-03	    Dr. Rajeshwar Singh        	Orthopedics            	Doctor@123
+DOC-AIIMS-04	    Dr. Sunita Deshmukh	        Pediatrics            	Doctor@123
+DOC-AIIMS-05	    Dr. Vivek Bhattacharya    	Neurology	            Doctor@123
+DOC-AIIMS-06	    Dr. Tanvi Sharma	        Dermatology            	Doctor@123
 
-## Quick Start
 
-### Prerequisites
-- Node.js v18+
+🟣 **Indraprastha Apollo**
+Doctor ID	        Doctor Name	                Password
+DOC-APOLLO-01	    Dr. Alok Mukherjee	        Doctor@123
+DOC-APOLLO-02	    Dr. Shalini Kapoor	        Doctor@123
+DOC-APOLLO-03	    Dr. Harsh Vardhan Goel	    Doctor@123
+DOC-APOLLO-04	    Dr. Ritu Rastogi	        Doctor@123
+DOC-APOL-26738	    Dr. Sneha Roy	            Doctor@123
+DOC-APOLLO-05	    Dr. Sunita Deshmukh	        SecureDoctorPass@123
+DOC-APOLLO-06	    Dr. Vivek Saxena	        SecureDoctorPass@123
 
-### Install & Run (Development)
 
-`bash
-# Install root dependencies
-npm install
 
-# Install frontend dependencies
-npm install --prefix frontend
+🟠 **Fortis Escorts**
+Doctor ID	        Doctor Name	            Password
+DOC-FORTIS-01	    Dr. Priya Nair	        Doctor@123
+DOC-FORTIS-02    	Dr. Sanjay Kaushik	    Doctor@123
+DOC-FORTIS-03	    Dr. Sameer Joshi	    Doctor@123
 
-# Install backend dependencies
-npm install --prefix backend
 
-# Run both (frontend :3000 + backend :5000)
-npm run dev
-`
+🟡 **Lok Nayak**
+Doctor ID      	Doctor Name            	Password
+DOC-LOK-01	    Dr. Manoj Saxena	    Doctor@123
+DOC-LOK-02	    Dr. Rekha Bansal	    Doctor@123
+DOC-LOK-03    	Dr. Devendra Sharma    	Doctor@123
+DOC-LOK-04    	Dr. Ananya Sen	        Doctor@123
 
-### Production Build
 
-`bash
-npm run build --prefix frontend
-node backend/src/server.js
-# Open http://localhost:5000
-`
+🟢 **Max Super Speciality**
+Doctor ID	    Doctor Name	                Password
+DOC-MAX-01	    Dr. Vikramaditya Rawat	    Doctor@123
+DOC-MAX-02	    Dr. Neha Agarwal	        Doctor@123
+DOC-MAX-03	    Dr. Rohan Mehra	            Doctor@123
 
----
 
-## Demo Credentials
-
-| Module | Login |
-|--------|-------|
-| Patient | UHID: UHID-2026-44205 or Mobile: 9310685960 |
-| Doctor | Hospital: AIIMS, Doctor ID: DOC-AIIMS-02, Password: Doctor@123 |
-| Ambulance | Vehicle: MH-01-AB-1234, PIN: 1234 |
-
----
-
-## Key Features
-
-- **2-Minute Sequential Emergency Routing** - Auto-escalates to next hospital if no response
-- **Real-Time Virtual Queue** - Patients track queue from home via Socket.IO
-- **Token Duplication Prevention** - MAX(token)+1 algorithm prevents reuse after cancellations
-- **Voice-to-Text Prescriptions** - Web Speech API dictation in doctor portal
-- **Cryptographic QR Identity** - HMAC-SHA256 signed patient identity cards
-- **IST-Safe Date Handling** - Local timezone-aware date logic throughout
-
----
-
-## Project Structure
-
-`
-coordination/
-├── backend/
-│   ├── src/
-│   │   ├── db/
-│   │   │   ├── opdDbManager.js      # All OPD business logic (~2400 lines)
-│   │   │   └── emergencyDbManager.js
-│   │   ├── routes/
-│   │   │   ├── opdRoutes.js
-│   │   │   └── emergencyRoutes.js
-│   │   └── server.js
-│   └── .env.example
-├── frontend/
-│   └── src/
-│       └── components/
-│           ├── patient/             # PatientAuth, OrsBookingWizard, PatientVirtualQueue...
-│           ├── doctor/              # DoctorOpdPortal (full chamber management)
-│           └── ambulance/           # AmbulanceCockpit, AmbulanceActiveRide...
-└── docs/
-    ├── API_DOCUMENTATION.md
-    └── DATABASE_ER_DIAGRAM.md
-`
-
----
-
-## License
-
-MIT License | For academic/prototype use
