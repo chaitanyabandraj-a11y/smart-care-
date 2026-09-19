@@ -1,0 +1,30 @@
+﻿# Dependencies
+node_modules/
+frontend/node_modules/
+backend/node_modules/
+
+# Build outputs
+frontend/dist/
+
+# SQLite databases (contain real data - do not commit)
+backend/data/
+
+# Environment files
+backend/.env
+.env
+.env.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# IDE
+.vscode/
+.idea/
+
+# Temp / scratch files
+*.tmp
