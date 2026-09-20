@@ -3,10 +3,10 @@ node_modules/
 frontend/node_modules/
 backend/node_modules/
 
-# Build outputs
+# Build output (Render builds this during deployment)
 frontend/dist/
 
-# SQLite databases (contain real data - do not commit)
+# SQLite databases (auto-created and seeded on server start)
 backend/data/
 
 # Environment files
@@ -25,6 +25,3 @@ npm-debug.log*
 # IDE
 .vscode/
 .idea/
-
-# Temp / scratch files
-*.tmp

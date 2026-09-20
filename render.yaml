@@ -1,0 +1,12 @@
+﻿services:
+  - type: web
+    name: smartcare-hospital-platform
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm install --prefix frontend && npm run build --prefix frontend
+    startCommand: node backend/src/server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: OPD_QR_SECRET
+        value: smartcare-qr-secret-2026-sih

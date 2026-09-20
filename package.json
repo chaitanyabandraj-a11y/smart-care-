@@ -1,20 +1,22 @@
 {
-  "name": "coordination",
+  "name": "smartcare-hospital-platform",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "SmartCare Healthcare Coordination Platform — Decentralized Multi-Hospital Emergency & OPD System",
+  "main": "backend/src/server.js",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "start": "node backend/src/server.js",
+    "build": "npm install --prefix frontend && npm run build --prefix frontend",
     "dev": "npm --prefix frontend run dev",
     "dev:backend": "node backend/src/server.js",
     "seed": "node backend/src/db/seedHospitals.js",
-    "seed:reset": "node backend/src/db/seedHospitals.js --reset",
-    "build:frontend": "cd frontend && npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "seed:reset": "node backend/src/db/seedHospitals.js --reset"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["healthcare", "hospital", "emergency", "opd", "smartcare"],
+  "author": "Chaitanya Bandraj",
+  "license": "MIT",
   "type": "commonjs",
   "dependencies": {
     "cors": "^2.8.6",
@@ -25,3 +27,4 @@
     "docx": "^9.7.1"
   }
 }
+
