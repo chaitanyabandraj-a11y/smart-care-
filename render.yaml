@@ -3,7 +3,7 @@
     name: smartcare-hospital-platform
     runtime: node
     plan: free
-    buildCommand: npm install && npm install --include=dev --prefix frontend && npm run build --prefix frontend
+    buildCommand: npm install && npm install --prefix frontend && npm run build --prefix frontend
     startCommand: node backend/src/server.js
     envVars:
       - key: NODE_ENV
