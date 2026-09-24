@@ -1,5 +1,13 @@
-// Frontend API client for Hospital Module and Emergency Module
-const API_BASE = '/api';
+const LIVE_BACKEND = 'https://smart-care-m6um.onrender.com';
+
+const isExternalDeploy = typeof window !== 'undefined' && 
+  (window.location.hostname.includes('vercel.app') || 
+   (!window.location.hostname.includes('onrender.com') && 
+    window.location.hostname !== 'localhost' && 
+    window.location.hostname !== '127.0.0.1'));
+
+export const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || (isExternalDeploy ? LIVE_BACKEND : '');
+export const API_BASE = `${BACKEND_URL}/api`;
 
 // --- HOSPITAL MODULE API ---
 export async function fetchHospitals() {

@@ -12,6 +12,14 @@ const opdRoutes = require('./routes/opdRoutes');
 const emergencyService = require('./services/emergencyService');
 const { runAllSeeds } = require('./db/seedHospitals');
 
+// Auto-seed and verify all 5 hospital and driver databases on server startup
+try {
+  runAllSeeds();
+  console.log('[Server Startup] Master hospital databases & ambulance fleets successfully verified.');
+} catch (err) {
+  console.error('[Server Startup] Database auto-seed error:', err.message);
+}
+
 const app = express();
 const server = http.createServer(app);
 

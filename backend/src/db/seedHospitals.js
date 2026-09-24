@@ -424,4 +424,4 @@ if (require.main === module) {
   runAllSeeds();
 }
 
-module.exports = { HOSPITALS_CONFIG, runAllSeeds, DATA_DIR };
+module.exports = { HOSPITALS_CONFIG, runAllSeeds, seedDatabase, DATA_DIR };

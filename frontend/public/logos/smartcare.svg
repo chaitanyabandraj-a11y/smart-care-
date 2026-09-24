@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <linearGradient id="scGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="50%" stop-color="#0d9488" />
+      <stop offset="100%" stop-color="#2563eb" />
+    </linearGradient>
+    <linearGradient id="scHeart" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+    <filter id="scShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#0284c7" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  <!-- Rounded Hex Shield Container -->
+  <rect x="8" y="8" width="104" height="104" rx="28" fill="url(#scGlow)" filter="url(#scShadow)" />
+  <rect x="10" y="10" width="100" height="100" rx="26" fill="#0f172a" opacity="0.15" />
+  
+  <!-- Inner Frosted Shield -->
+  <rect x="14" y="14" width="92" height="92" rx="22" fill="#ffffff" fill-opacity="0.15" stroke="#ffffff" stroke-width="2" stroke-opacity="0.4" />
+  
+  <!-- Central Medical Cross + Heartbeat Pulse -->
+  <g transform="translate(60, 60)">
+    <!-- Medical Cross Subtle Fill -->
+    <path d="M-10,-32 L10,-32 L10,-10 L32,-10 L32,10 L10,10 L10,32 L-10,32 L-10,10 L-32,10 L-32,-10 L-10,-10 Z" fill="#ffffff" fill-opacity="0.22" rx="4" />
+    
+    <!-- Dynamic Heart Pulse Curve -->
+    <path d="M-36,2 L-20,2 L-13,-18 L-5,22 L4,-12 L11,10 L18,2 L36,2" 
+          fill="none" 
+          stroke="#ffffff" 
+          stroke-width="5" 
+          stroke-linecap="round" 
+          stroke-linejoin="round" />
+          
+    <!-- Pulse glowing dot -->
+    <circle cx="36" cy="2" r="4.5" fill="#38bdf8" stroke="#ffffff" stroke-width="2" />
+    <circle cx="-36" cy="2" r="4.5" fill="#38bdf8" stroke="#ffffff" stroke-width="2" />
+  </g>
+</svg>

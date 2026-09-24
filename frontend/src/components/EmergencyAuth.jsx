@@ -143,19 +143,16 @@ export default function EmergencyAuth({ onAuthSuccess }) {
     }}>
       {/* Header */}
       <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-        <div style={{
-          width: '50px',
-          height: '50px',
-          borderRadius: 'var(--radius-lg)',
-          backgroundColor: '#fee2e2',
-          color: 'var(--danger)',
-          display: 'inline-flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          marginBottom: '12px'
-        }}>
-          <ShieldCheck size={28} />
-        </div>
+        <img 
+          src="/logos/emergency.svg" 
+          alt="Emergency SOS" 
+          style={{
+            width: '56px',
+            height: '56px',
+            marginBottom: '10px',
+            filter: 'drop-shadow(0 6px 14px rgba(220, 38, 38, 0.35))'
+          }}
+        />
         <h2 style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--text-main)' }}>
           Emergency Patient Portal Access
         </h2>

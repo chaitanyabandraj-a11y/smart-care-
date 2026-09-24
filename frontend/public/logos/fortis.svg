@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="fortisGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#064e3b" />
+    </linearGradient>
+  </defs>
+  
+  <rect x="4" y="4" width="92" height="92" rx="22" fill="url(#fortisGreen)" stroke="#34d399" stroke-width="2" />
+  
+  <!-- Fortis Care Hands & Red Human Silhouette Motif -->
+  <g transform="translate(50, 44)">
+    <!-- Red Healing Cross/Human Top Circle -->
+    <circle cx="0" cy="-18" r="6" fill="#ef4444" />
+    
+    <!-- Human Body in Red -->
+    <path d="M-5,-9 L5,-9 L8,14 L-8,14 Z" fill="#ef4444" rx="2" />
+    
+    <!-- Two Hands Reaching Up in Green/White Care -->
+    <!-- Left Hand -->
+    <path d="M-22,6 C-18,-4 -12,-10 -6,-10 C-10,-4 -10,6 -14,14 C-18,12 -21,10 -22,6 Z" fill="#ffffff" />
+    <!-- Right Hand -->
+    <path d="M22,6 C18,-4 12,-10 6,-10 C10,-4 10,6 14,14 C18,12 21,10 22,6 Z" fill="#ffffff" />
+    
+    <!-- Base Heart/Pedestal -->
+    <path d="M-14,16 Q0,26 14,16 L12,20 Q0,29 -12,20 Z" fill="#a7f3d0" />
+  </g>
+  
+  <text x="50" y="86" text-anchor="middle" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-weight="900" font-size="10" fill="#f8fafc" letter-spacing="1.5">FORTIS</text>
+</svg>

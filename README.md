@@ -1,4 +1,4 @@
-﻿# SmartCare Healthcare Coordination Platform
+# SmartCare Healthcare Coordination Platform
 
 > Decentralized Multi-Hospital Emergency Coordination & Digital OPD Management System
 
@@ -117,6 +117,40 @@
 | DOC-MAX-01 | Dr. Vikramaditya Rawat | Doctor@123 |
 | DOC-MAX-02 | Dr. Neha Agarwal | Doctor@123 |
 | DOC-MAX-03 | Dr. Rohan Mehra | Doctor@123 |
+
+---
+
+## FOR EMERGENCY PATIENT ACCESS (1-Tap SOS)
+
+| Identifier (Email or Mobile) | Password | Verification OTP |
+|---|---|---|
+| `chaitanyabandraj@gmail.com` or `9310685960` | `Emergency@123` (or `Password@123`) | Auto-displayed / `123456` |
+| `kajal@gmail.com` or `8287547496` | `Emergency@123` | Auto-displayed / `123456` |
+| Any email or phone (Auto-Provisioned) | Any password | Auto-displayed / `123456` |
+
+> Emergency Portal is equipped with **Smart Zero-Friction Access**: entering any phone number or email immediately provisions access so no emergency patient is ever locked out.
+
+---
+
+## DEPLOYMENT GUIDE
+
+### Option 1: Deploy to Vercel (Frontend & Edge Proxy)
+
+1. Push this repository to your GitHub account (already linked: `chaitanyabandraj-a11y/smart-care-`).
+2. Log in to [vercel.com](https://vercel.com) and click **"Add New Project"** -> **"Import"** this GitHub repository.
+3. Vercel automatically detects the root `vercel.json` and Vite framework:
+   - **Framework Preset**: Vite
+   - **Root Directory**: `./` (or `frontend` — both configured with `vercel.json`)
+   - **Build Command**: `npm run build`
+   - **Output Directory**: `frontend/dist`
+4. Click **Deploy**.
+5. Once deployed, the frontend automatically routes API and real-time Socket.IO requests to the live backend server on Render (`https://smart-care-m6um.onrender.com`).
+
+### Option 2: Deploy to Render (Unified Backend + Frontend)
+
+1. The project includes `render.yaml` and is deployed at: **https://smart-care-m6um.onrender.com**
+2. On every build, `node backend/src/db/seedHospitals.js` auto-seeds all 5 independent SQLite databases (`apollo.db`, `lok_nayak.db`, `aiims.db`, `fortis.db`, `max.db`), plus `emergency.db` and `opd.db`.
+3. Self-healing DB loader guarantees that all 5 hospital fleets and bed inventories are instantly available across every module.
 
 ---
 

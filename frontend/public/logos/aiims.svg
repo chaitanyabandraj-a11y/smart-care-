@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <radialGradient id="aiimsBg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#881337" />
+      <stop offset="100%" stop-color="#4c0519" />
+    </radialGradient>
+  </defs>
+  <!-- Shield Badge -->
+  <circle cx="50" cy="50" r="46" fill="url(#aiimsBg)" stroke="#f59e0b" stroke-width="3" />
+  <circle cx="50" cy="50" r="41" fill="none" stroke="#fef3c7" stroke-width="1.2" stroke-dasharray="3 2" />
+  
+  <!-- Ashoka Chakra & Caduceus Symbolism -->
+  <g transform="translate(50, 48)">
+    <!-- Central Staff of Asclepius -->
+    <line x1="0" y1="-26" x2="0" y2="28" stroke="#fbbf24" stroke-width="3" stroke-linecap="round" />
+    <polygon points="0,-30 -4,-24 4,-24" fill="#fbbf24" />
+    
+    <!-- Coiled Serpent -->
+    <path d="M-10,-18 Q-2,-14 0,-8 Q4,-2 8,2 Q10,8 2,14 Q-8,18 0,24" fill="none" stroke="#fef08a" stroke-width="2.5" stroke-linecap="round" />
+    
+    <!-- Laurel Wreath -->
+    <path d="M-24,10 C-26,0 -20,-16 -8,-22" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" />
+    <path d="M24,10 C26,0 20,-16 8,-22" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" />
+  </g>
+  
+  <!-- AIIMS Text Arc Ribbon -->
+  <rect x="22" y="74" width="56" height="16" rx="8" fill="#f59e0b" />
+  <text x="50" y="85" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="9" fill="#4c0519" letter-spacing="1">AIIMS</text>
+</svg>

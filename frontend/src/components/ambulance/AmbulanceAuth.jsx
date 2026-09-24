@@ -170,19 +170,17 @@ export default function AmbulanceAuth({ onAuthSuccess }) {
         alignItems: 'center',
         gap: '14px'
       }}>
-        <div style={{
-          width: '46px',
-          height: '46px',
-          borderRadius: 'var(--radius-lg)',
-          backgroundColor: 'var(--primary-light)',
-          color: 'var(--primary)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          flexShrink: 0
-        }}>
-          <Truck size={24} />
-        </div>
+        <img 
+          src="/logos/ambulance.svg" 
+          alt="Ambulance Pilot Portal" 
+          style={{
+            width: '50px',
+            height: '50px',
+            borderRadius: 'var(--radius-lg)',
+            boxShadow: '0 4px 12px rgba(2, 132, 199, 0.3)',
+            flexShrink: 0
+          }}
+        />
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <h2 style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--text-main)', margin: 0 }}>
@@ -241,8 +239,24 @@ export default function AmbulanceAuth({ onAuthSuccess }) {
             </select>
           )}
           {currentHospital && (
-            <div style={{ fontSize: '0.75rem', color: 'var(--text-dim)', marginTop: '6px', display: 'flex', alignItems: 'center', gap: '4px' }}>
-              📍 Station Base: {currentHospital.address}
+            <div style={{
+              fontSize: '0.78rem',
+              color: 'var(--text-dim)',
+              marginTop: '8px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              backgroundColor: 'var(--bg-surface-soft)',
+              padding: '6px 10px',
+              borderRadius: 'var(--radius-sm)'
+            }}>
+              <img 
+                src={`/logos/${currentHospital.id}.svg`} 
+                alt="" 
+                style={{ width: '22px', height: '22px', objectFit: 'contain' }} 
+                onError={(e) => { e.currentTarget.style.display = 'none'; }}
+              />
+              <span>Station Base: <strong>{currentHospital.name}</strong> — {currentHospital.address}</span>
             </div>
           )}
         </div>

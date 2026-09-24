@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <radialGradient id="sosGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ef4444" />
+      <stop offset="80%" stop-color="#b91c1c" />
+      <stop offset="100%" stop-color="#991b1b" />
+    </radialGradient>
+  </defs>
+  <!-- Shield Badge -->
+  <polygon points="50,6 88,22 88,54 50,92 12,54 12,22" fill="url(#sosGrad)" stroke="#fecaca" stroke-width="2.5" />
+  
+  <g transform="translate(50, 48)">
+    <!-- Central White Emergency Cross -->
+    <path d="M-8,-22 L8,-22 L8,-8 L22,-8 L22,8 L8,8 L8,22 L-8,22 L-8,8 L-22,8 L-22,-8 L-8,-8 Z" fill="#ffffff" />
+    <!-- Pulse mark inside cross -->
+    <path d="M-14,0 L-6,0 L-2,-6 L2,6 L6,-2 L14,0" fill="none" stroke="#dc2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+</svg>

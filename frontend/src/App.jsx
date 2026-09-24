@@ -123,23 +123,22 @@ export default function App() {
           gap: '14px'
         }}>
           {/* Logo & Platform Name */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <div style={{
-              width: '40px',
-              height: '40px',
-              borderRadius: 'var(--radius-md)',
-              background: 'linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%)',
-              color: '#ffffff',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              boxShadow: '0 2px 8px rgba(2, 132, 199, 0.3)'
-            }}>
-              <HeartPulse size={24} />
-            </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+            <img 
+              src="/logos/smartcare.svg" 
+              alt="SmartCare Platform" 
+              style={{
+                width: '44px',
+                height: '44px',
+                borderRadius: '14px',
+                objectFit: 'contain',
+                boxShadow: '0 4px 14px rgba(2, 132, 199, 0.35)',
+                flexShrink: 0
+              }} 
+            />
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--text-main)', letterSpacing: '-0.02em' }}>
+                <span style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--text-main)', letterSpacing: '-0.02em' }}>
                   SmartCare
                 </span>
                 <span className="badge badge-blue">Healthcare Coordination Platform</span>

@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const { DatabaseSync } = require('node:sqlite');
-const { DATA_DIR, HOSPITALS_CONFIG } = require('./seedHospitals');
+const { DATA_DIR, HOSPITALS_CONFIG, runAllSeeds, seedDatabase } = require('./seedHospitals');
 
 const dbConnections = new Map();
 
@@ -12,7 +12,13 @@ function getHospitalDb(hospitalId) {
 
   const dbPath = path.join(DATA_DIR, `${hospitalId}.db`);
   if (!fs.existsSync(dbPath)) {
-    throw new Error(`Database file not found for hospital: ${hospitalId}`);
+    console.log(`[Auto-Seed] Database file missing for ${hospitalId}, generating now...`);
+    const cfg = HOSPITALS_CONFIG.find(h => h.id === hospitalId);
+    if (cfg && typeof seedDatabase === 'function') {
+      seedDatabase(cfg);
+    } else if (typeof runAllSeeds === 'function') {
+      runAllSeeds();
+    }
   }
 
   const db = new DatabaseSync(dbPath);
@@ -20,9 +26,9 @@ function getHospitalDb(hospitalId) {
   return db;
 }
 
-// Get all hospitals for the portal dropdown list
+// Get all hospitals for the portal dropdown list (guaranteed self-healing)
 function getAllHospitals() {
-  const result = [];
+  let result = [];
 
   for (const item of HOSPITALS_CONFIG) {
     try {
@@ -49,6 +55,36 @@ function getAllHospitals() {
       });
     } catch (err) {
       console.error(`Error reading database for ${item.id}:`, err.message);
+    }
+  }
+
+  // If databases were completely missing on a fresh host, auto-seed and reload
+  if (result.length === 0 && typeof runAllSeeds === 'function') {
+    console.log('[Auto-Seed] Empty hospitals registry detected. Running master seed...');
+    runAllSeeds();
+    for (const item of HOSPITALS_CONFIG) {
+      try {
+        const db = getHospitalDb(item.id);
+        const profile = db.prepare('SELECT id, name, address, phone, emergency_contact FROM hospital_profile WHERE id = ?').get(item.id);
+        const admin = db.prepare('SELECT admin_id, admin_name, is_registered FROM admin_credentials LIMIT 1').get();
+        const beds = db.prepare('SELECT total_beds, available_beds, icu_available, oxygen_available, general_available FROM bed_inventory WHERE id = 1').get();
+        const doctors = db.prepare('SELECT total_doctors, available_doctors, emergency_duty, opd_duty FROM doctor_inventory WHERE id = 1').get();
+        result.push({
+          id: item.id,
+          name: profile?.name || item.name,
+          address: profile?.address || item.address,
+          phone: profile?.phone || item.phone,
+          emergencyContact: profile?.emergency_contact || item.emergencyContact,
+          adminName: admin?.admin_name || item.admin.name,
+          isRegistered: Boolean(admin?.is_registered),
+          stats: {
+            totalBeds: beds?.total_beds || 0,
+            availableBeds: beds?.available_beds || 0,
+            totalDoctors: doctors?.total_doctors || 0,
+            availableDoctors: doctors?.available_doctors || 0
+          }
+        });
+      } catch (_) {}
     }
   }
 

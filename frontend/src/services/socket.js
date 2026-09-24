@@ -2,9 +2,19 @@ import { io } from 'socket.io-client';
 
 let socket = null;
 
+const LIVE_BACKEND = 'https://smart-care-m6um.onrender.com';
+
+const isExternalDeploy = typeof window !== 'undefined' && 
+  (window.location.hostname.includes('vercel.app') || 
+   (!window.location.hostname.includes('onrender.com') && 
+    window.location.hostname !== 'localhost' && 
+    window.location.hostname !== '127.0.0.1'));
+
+export const SOCKET_SERVER_URL = import.meta.env.VITE_BACKEND_URL || (isExternalDeploy ? LIVE_BACKEND : window.location.origin);
+
 export function getSocket() {
   if (!socket) {
-    socket = io(window.location.origin, {
+    socket = io(SOCKET_SERVER_URL, {
       transports: ['websocket', 'polling'],
       reconnectionAttempts: 10,
       reconnectionDelay: 1000

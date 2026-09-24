@@ -50,17 +50,28 @@ export default function HospitalSelector({ hospitals, selectedHospital, onSelect
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
           <div style={{
-            width: '44px',
-            height: '44px',
+            width: '46px',
+            height: '46px',
             borderRadius: 'var(--radius-md)',
             backgroundColor: selectedHospital ? 'var(--primary-light)' : 'var(--bg-surface-soft)',
             color: selectedHospital ? 'var(--primary)' : 'var(--text-dim)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            flexShrink: 0
+            flexShrink: 0,
+            overflow: 'hidden',
+            border: selectedHospital ? '1.5px solid rgba(2, 132, 199, 0.25)' : '1px solid var(--border-light)'
           }}>
-            <Building2 size={24} />
+            {selectedHospital ? (
+              <img 
+                src={`/logos/${selectedHospital.id}.svg`} 
+                alt={selectedHospital.name} 
+                style={{ width: '40px', height: '40px', objectFit: 'contain' }}
+                onError={(e) => { e.currentTarget.style.display = 'none'; }}
+              />
+            ) : (
+              <Building2 size={24} />
+            )}
           </div>
 
           <div>
@@ -184,19 +195,30 @@ export default function HospitalSelector({ hospitals, selectedHospital, onSelect
                 >
                   <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
                     <div style={{
-                      width: '38px',
-                      height: '38px',
+                      width: '40px',
+                      height: '40px',
                       borderRadius: 'var(--radius-sm)',
-                      backgroundColor: isCurrent ? 'var(--primary)' : '#e2e8f0',
-                      color: isCurrent ? '#ffffff' : 'var(--text-main)',
+                      backgroundColor: isCurrent ? 'var(--primary-light)' : '#ffffff',
+                      color: isCurrent ? 'var(--primary)' : 'var(--text-main)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       fontWeight: 700,
                       fontSize: '0.9rem',
-                      flexShrink: 0
+                      flexShrink: 0,
+                      overflow: 'hidden',
+                      border: '1px solid var(--border-light)',
+                      boxShadow: '0 1px 3px rgba(0,0,0,0.05)'
                     }}>
-                      {h.name.charAt(0)}
+                      <img 
+                        src={`/logos/${h.id}.svg`} 
+                        alt={h.name} 
+                        style={{ width: '34px', height: '34px', objectFit: 'contain' }}
+                        onError={(e) => { 
+                          e.currentTarget.style.display = 'none'; 
+                          e.currentTarget.parentElement.innerText = h.name.charAt(0);
+                        }}
+                      />
                     </div>
 
                     <div>

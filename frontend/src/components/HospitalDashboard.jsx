@@ -669,17 +669,27 @@ export default function HospitalDashboard({ hospitalId, admin, onLogout }) {
           {/* Hospital Identity */}
           <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
             <div style={{
-              width: '54px',
-              height: '54px',
+              width: '56px',
+              height: '56px',
               borderRadius: 'var(--radius-lg)',
               backgroundColor: 'var(--primary-light)',
               color: 'var(--primary)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              flexShrink: 0
+              flexShrink: 0,
+              overflow: 'hidden',
+              boxShadow: '0 4px 12px rgba(2, 132, 199, 0.25)',
+              border: '1.5px solid rgba(2, 132, 199, 0.2)'
             }}>
-              <Building2 size={30} />
+              <img 
+                src={`/logos/${hospital.id}.svg`} 
+                alt={hospital.name} 
+                style={{ width: '48px', height: '48px', objectFit: 'contain' }}
+                onError={(e) => { 
+                  e.currentTarget.style.display = 'none'; 
+                }}
+              />
             </div>
 
             <div>

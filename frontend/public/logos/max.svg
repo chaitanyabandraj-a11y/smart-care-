@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="maxRed" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#b91c1c" />
+      <stop offset="100%" stop-color="#7f1d1d" />
+    </linearGradient>
+  </defs>
+  
+  <rect x="4" y="4" width="92" height="92" rx="22" fill="url(#maxRed)" stroke="#fca5a5" stroke-width="2" />
+  
+  <!-- Max Healthcare Iconic Double Chevron & Cross Motif -->
+  <g transform="translate(50, 44)">
+    <!-- White Medical Cross Background -->
+    <rect x="-14" y="-14" width="28" height="28" rx="8" fill="#ffffff" />
+    
+    <!-- Red Accent Inner Plus -->
+    <path d="M-3,-9 L3,-9 L3,-3 L9,-3 L9,3 L3,3 L3,9 L-3,9 L-3,3 L-9,3 L-9,-3 L-3,-3 Z" fill="#dc2626" />
+    
+    <!-- Dynamic Care Chevrons / Wings -->
+    <path d="M-26,-4 L-18,6 L-26,16" fill="none" stroke="#fecaca" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M26,-4 L18,6 L26,16" fill="none" stroke="#fecaca" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+  
+  <text x="50" y="86" text-anchor="middle" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-weight="900" font-size="11" fill="#ffffff" letter-spacing="1.5">MAX</text>
+</svg>

@@ -1,34 +1,50 @@
-/* SmartCare Hospital Portal - Descent, Beautiful Clinical Light Theme */
+/* ==========================================================================
+   SmartCare Healthcare Coordination Platform — Ultra-Premium Design System
+   Clinical Glassmorphism, Dynamic Gradients, Medical Motifs & High-Tech HUD
+   ========================================================================== */
+
 :root {
-  /* Brand Clinical Palette */
+  /* Brand Clinical & High-Tech Medical Palette */
   --primary: #0284c7;           /* Medical Sky Blue */
-  --primary-hover: #0369a1;
-  --primary-light: #e0f2fe;
-  --primary-glow: rgba(2, 132, 199, 0.15);
+  --primary-hover: #0369a1;     /* Deep Clinical Azure */
+  --primary-dark: #075985;
+  --primary-light: #e0f2fe;     /* Soft Azure Wash */
+  --primary-glow: rgba(2, 132, 199, 0.18);
 
   --secondary: #0d9488;         /* Clinical Teal */
   --secondary-hover: #0f766e;
   --secondary-light: #ccfbf1;
+  --secondary-glow: rgba(13, 148, 136, 0.18);
 
   --accent: #6366f1;            /* Digital Health Indigo */
+  --accent-hover: #4f46e5;
   --accent-light: #e0e7ff;
+  --accent-glow: rgba(99, 102, 241, 0.18);
 
   --success: #059669;           /* Health Emerald */
+  --success-hover: #047857;
   --success-light: #d1fae5;
-  --warning: #d97706;           /* Amber Alert */
-  --warning-light: #fef3c7;
-  --danger: #dc2626;            /* Emergency Crimson */
-  --danger-light: #fee2e2;
+  --success-glow: rgba(5, 150, 105, 0.2);
 
-  /* Surfaces & Backgrounds */
+  --warning: #d97706;           /* Amber Alert */
+  --warning-hover: #b45309;
+  --warning-light: #fef3c7;
+  --warning-glow: rgba(217, 119, 6, 0.2);
+
+  --danger: #dc2626;            /* Emergency Crimson */
+  --danger-hover: #b91c1c;
+  --danger-light: #fee2e2;
+  --danger-glow: rgba(220, 38, 38, 0.25);
+
+  /* Surfaces & Ambient Backdrops */
   --bg-main: #f8fafc;           /* Crisp clean clinical canvas */
   --bg-surface: #ffffff;        /* Pure white cards */
   --bg-surface-elevated: #ffffff;
   --bg-surface-soft: #f1f5f9;   /* Soft slate grouping */
-  --bg-glass: rgba(255, 255, 255, 0.88);
+  --bg-glass: rgba(255, 255, 255, 0.92);
   --border-glass: rgba(226, 232, 240, 0.9);
 
-  /* Typography & Contrast */
+  /* Typography & High Contrast */
   --text-main: #0f172a;         /* Deep slate navy */
   --text-muted: #475569;        /* Medium clinical slate */
   --text-dim: #64748b;          /* Soft slate */
@@ -38,20 +54,21 @@
   --border-light: #e2e8f0;
   --border-focus: #38bdf8;
 
-  /* Shadows */
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 4px 12px -2px rgba(15, 23, 42, 0.07), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
-  --shadow-lg: 0 10px 25px -3px rgba(15, 23, 42, 0.08), 0 4px 10px -2px rgba(15, 23, 42, 0.03);
-  --shadow-hover: 0 12px 30px -4px rgba(2, 132, 199, 0.12), 0 6px 12px -3px rgba(15, 23, 42, 0.04);
+  /* Multi-Tier Drop Shadows */
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 4px 16px -2px rgba(15, 23, 42, 0.07), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
+  --shadow-lg: 0 12px 30px -4px rgba(15, 23, 42, 0.08), 0 4px 12px -2px rgba(15, 23, 42, 0.04);
+  --shadow-xl: 0 20px 45px -6px rgba(2, 132, 199, 0.12), 0 8px 20px -3px rgba(15, 23, 42, 0.05);
+  --shadow-hover: 0 16px 36px -4px rgba(2, 132, 199, 0.14), 0 6px 14px -2px rgba(15, 23, 42, 0.04);
 
-  /* Radii */
+  /* Geometry & Radii */
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 18px;
   --radius-xl: 24px;
   --radius-full: 9999px;
 
-  /* Font */
+  /* Fonts */
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 }
@@ -70,27 +87,62 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: 
-    radial-gradient(at 0% 0%, rgba(2, 132, 199, 0.04) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, rgba(13, 148, 136, 0.05) 0px, transparent 50%),
-    radial-gradient(at 50% 50%, rgba(241, 245, 249, 0.5) 0px, transparent 100%);
+    radial-gradient(at 0% 0%, rgba(2, 132, 199, 0.07) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(13, 148, 136, 0.06) 0px, transparent 50%),
+    radial-gradient(at 50% 100%, rgba(99, 102, 241, 0.05) 0px, transparent 60%),
+    url('/logos/medical-pattern.svg');
+  background-size: auto, auto, auto, 40px 40px;
   background-attachment: fixed;
   min-height: 100vh;
 }
 
+/* Custom Sleek Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(241, 245, 249, 0.6);
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
 /* Animations */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(6px); }
+  from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slideDown {
-  from { opacity: 0; transform: translateY(-10px); }
+  from { opacity: 0; transform: translateY(-12px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes pulseSubtle {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.85; transform: scale(1.03); }
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(220, 38, 38, 0);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes radarPing {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 0.3; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }
 
 .animate-fade-in {
@@ -104,16 +156,17 @@ body {
 /* Glass & Card Styling */
 .card-glass {
   background: var(--bg-glass);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--border-glass);
-  border-radius: var(--radius-lg);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1.5px solid var(--border-glass);
+  border-radius: var(--radius-xl);
   box-shadow: var(--shadow-md);
-  transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .card-glass:hover {
   box-shadow: var(--shadow-hover);
+  border-color: rgba(2, 132, 199, 0.3);
 }
 
 /* Buttons */
@@ -123,15 +176,17 @@ body {
   justify-content: center;
   gap: 8px;
   font-family: var(--font-sans);
-  font-size: 0.9rem;
-  font-weight: 600;
-  padding: 9px 18px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  padding: 10px 20px;
   border-radius: var(--radius-md);
   border: 1px solid transparent;
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
   user-select: none;
+  position: relative;
+  overflow: hidden;
 }
 
 .btn:active {
@@ -139,107 +194,124 @@ body {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary) 0%, #0274b3 100%);
+  background: linear-gradient(135deg, var(--primary) 0%, #0274b3 50%, #0d9488 100%);
   color: #ffffff;
-  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.3);
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, var(--primary-hover) 0%, #035b8c 100%);
-  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.4);
+  background: linear-gradient(135deg, var(--primary-hover) 0%, #0284c7 50%, #0f766e 100%);
+  box-shadow: 0 6px 20px rgba(2, 132, 199, 0.45);
+  transform: translateY(-1px);
 }
 
 .btn-teal {
   background: linear-gradient(135deg, var(--secondary) 0%, #0b7f74 100%);
   color: #ffffff;
-  box-shadow: 0 2px 8px rgba(13, 148, 136, 0.3);
+  box-shadow: 0 4px 14px rgba(13, 148, 136, 0.3);
 }
 
 .btn-teal:hover {
   background: linear-gradient(135deg, var(--secondary-hover) 0%, #0b685f 100%);
+  box-shadow: 0 6px 18px rgba(13, 148, 136, 0.4);
+  transform: translateY(-1px);
 }
 
 .btn-secondary {
   background: #ffffff;
   color: var(--text-main);
-  border: 1px solid var(--border-light);
+  border: 1.5px solid var(--border-light);
   box-shadow: var(--shadow-sm);
 }
 
 .btn-secondary:hover {
   background: var(--bg-surface-soft);
   border-color: #cbd5e1;
+  transform: translateY(-1px);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 50%, #b91c1c 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(220, 38, 38, 0.35);
+  animation: pulseGlow 2.5s infinite;
+}
+
+.btn-danger:hover {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  box-shadow: 0 6px 22px rgba(220, 38, 38, 0.5);
 }
 
 .btn-sm {
-  padding: 6px 12px;
+  padding: 7px 14px;
   font-size: 0.82rem;
   border-radius: var(--radius-sm);
 }
 
 .btn-icon {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   padding: 0;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
   display: inline-flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Badges */
+/* Badges & Chips */
 .badge {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  padding: 3px 9px;
+  gap: 6px;
+  padding: 4px 11px;
   font-size: 0.78rem;
-  font-weight: 600;
+  font-weight: 700;
   border-radius: var(--radius-full);
-  letter-spacing: 0.01em;
+  letter-spacing: 0.02em;
+  transition: all 0.15s ease;
 }
 
 .badge-blue {
   background: var(--primary-light);
   color: #0369a1;
-  border: 1px solid rgba(2, 132, 199, 0.2);
+  border: 1px solid rgba(2, 132, 199, 0.25);
 }
 
 .badge-teal {
   background: var(--secondary-light);
   color: #0f766e;
-  border: 1px solid rgba(13, 148, 136, 0.2);
+  border: 1px solid rgba(13, 148, 136, 0.25);
 }
 
 .badge-green {
   background: var(--success-light);
   color: #047857;
-  border: 1px solid rgba(5, 150, 105, 0.2);
+  border: 1px solid rgba(5, 150, 105, 0.25);
 }
 
 .badge-amber {
   background: var(--warning-light);
   color: #b45309;
-  border: 1px solid rgba(217, 119, 6, 0.2);
+  border: 1px solid rgba(217, 119, 6, 0.25);
 }
 
 .badge-red {
   background: var(--danger-light);
   color: #b91c1c;
-  border: 1px solid rgba(220, 38, 38, 0.2);
+  border: 1px solid rgba(220, 38, 38, 0.25);
 }
 
-/* Form inputs */
+/* Form Inputs & Selects */
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  margin-bottom: 16px;
+  gap: 7px;
+  margin-bottom: 18px;
 }
 
 .form-label {
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-size: 0.86rem;
+  font-weight: 700;
   color: var(--text-main);
   display: flex;
   justify-content: space-between;
@@ -248,23 +320,25 @@ body {
 
 .form-input {
   width: 100%;
-  padding: 10px 14px;
+  padding: 11px 16px;
   font-family: var(--font-sans);
-  font-size: 0.92rem;
+  font-size: 0.94rem;
   color: var(--text-main);
   background: #ffffff;
   border: 1.5px solid var(--border-light);
   border-radius: var(--radius-md);
   outline: none;
-  transition: all 0.15s ease;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
 }
 
 .form-input:focus {
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px var(--primary-glow);
+  box-shadow: 0 0 0 4px var(--primary-glow);
+  background-color: #ffffff;
 }
 
-/* Counter box */
+/* Counter Box */
 .counter-box {
   display: flex;
   align-items: center;
@@ -272,51 +346,91 @@ body {
   border: 1.5px solid var(--border-light);
   border-radius: var(--radius-md);
   overflow: hidden;
+  box-shadow: var(--shadow-sm);
 }
 
 .counter-btn {
   background: var(--bg-surface-soft);
   border: none;
-  padding: 8px 12px;
+  padding: 10px 14px;
   cursor: pointer;
   color: var(--text-main);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.15s ease;
+  transition: all 0.15s ease;
 }
 
 .counter-btn:hover {
   background: #e2e8f0;
+  color: var(--primary);
 }
 
 .counter-value {
   flex: 1;
   text-align: center;
   font-family: var(--font-mono);
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-size: 1.15rem;
+  font-weight: 800;
   color: var(--text-main);
-  padding: 4px 8px;
+  padding: 6px 10px;
   border: none;
   outline: none;
   min-width: 60px;
 }
 
-/* Utilities */
+/* Status Indicators */
 .status-indicator {
-  width: 8px;
-  height: 8px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   display: inline-block;
+  position: relative;
 }
 
 .status-indicator.active {
   background-color: var(--success);
-  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.2);
+  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.25);
+  animation: radarPing 2.5s infinite;
 }
 
 .status-indicator.amber {
   background-color: var(--warning);
-  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.2);
+  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.25);
+}
+
+.status-indicator.red {
+  background-color: var(--danger);
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.3);
+  animation: pulseGlow 1.8s infinite;
+}
+
+/* Top Navbar Polish */
+header {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.94) !important;
+  border-bottom: 1.5px solid rgba(226, 232, 240, 0.85) !important;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05) !important;
+}
+
+/* Tab buttons in navbar */
+header button {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+header button:hover {
+  transform: translateY(-1px);
+  color: var(--primary) !important;
+}
+
+/* Hospital Emblem Avatars */
+.hospital-emblem-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--border-light);
+  overflow: hidden;
 }
