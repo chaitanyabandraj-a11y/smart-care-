@@ -2,6 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { ShieldCheck, LogIn, UserPlus, KeyRound, User, Lock, AlertCircle, CheckCircle2, Building2 } from 'lucide-react';
 import { registerAdmin, loginAdmin } from '../services/api';
 
+const DEMO_HOSPITAL_CREDENTIALS = {
+  apollo: { id: 'ADMIN-APOLLO-01', pass: 'Apollo@2026', name: 'Dr. Rajesh Sharma' },
+  lok_nayak: { id: 'ADMIN-LNJP-01', pass: 'LNJP@2026', name: 'Dr. Suresh Kumar' },
+  aiims: { id: 'ADMIN-AIIMS-01', pass: 'AIIMS@2026', name: 'Dr. Randeep Guleria' },
+  fortis: { id: 'ADMIN-FORTIS-01', pass: 'Fortis@2026', name: 'Dr. Ashok Seth' },
+  max: { id: 'ADMIN-MAX-01', pass: 'Max@2026', name: 'Dr. Balbir Singh' }
+};
+
 export default function AdminAuthModal({ hospital, onAuthSuccess, onBackToSelection }) {
   const [activeTab, setActiveTab] = useState(hospital.isRegistered ? 'login' : 'register');
   const [adminName, setAdminName] = useState('');
@@ -10,6 +18,18 @@ export default function AdminAuthModal({ hospital, onAuthSuccess, onBackToSelect
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
+
+  const fillDemoCredentials = () => {
+    const creds = DEMO_HOSPITAL_CREDENTIALS[hospital.id] || {
+      id: `ADMIN-${hospital.id.toUpperCase()}-01`,
+      pass: 'Apollo@2026',
+      name: 'Dr. Rajesh Sharma'
+    };
+    setAdminId(creds.id);
+    setPassword(creds.pass);
+    setAdminName(creds.name);
+    setErrorMessage('');
+  };
 
   // Auto-adapt tab when hospital prop changes
   useEffect(() => {
@@ -210,6 +230,43 @@ export default function AdminAuthModal({ hospital, onAuthSuccess, onBackToSelect
         >
           <LogIn size={16} />
           <span>Admin Login</span>
+        </button>
+      </div>
+
+      {/* 1-Click Demo Credentials Quick Fill */}
+      <div style={{
+        marginBottom: '18px',
+        padding: '10px 14px',
+        backgroundColor: 'rgba(2, 132, 199, 0.06)',
+        border: '1px dashed #38bdf8',
+        borderRadius: 'var(--radius-md)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap',
+        gap: '8px'
+      }}>
+        <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
+          <span style={{ fontWeight: 800, color: 'var(--primary)' }}>⚡ Fast Evaluation: </span>
+          <span>Click to auto-populate developer credentials</span>
+        </div>
+        <button
+          type="button"
+          onClick={fillDemoCredentials}
+          className="btn btn-sm"
+          style={{
+            backgroundColor: '#ffffff',
+            border: '1.5px solid #0284c7',
+            color: '#0284c7',
+            fontWeight: 800,
+            fontSize: '0.76rem',
+            padding: '4px 10px',
+            borderRadius: 'var(--radius-full)',
+            cursor: 'pointer',
+            boxShadow: 'var(--shadow-sm)'
+          }}
+        >
+          🔑 Auto-Fill {hospital.name.split(' ')[0]} Admin Credentials
         </button>
       </div>
 

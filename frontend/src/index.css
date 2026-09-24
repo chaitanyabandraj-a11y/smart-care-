@@ -69,7 +69,8 @@
   --radius-full: 9999px;
 
   /* Fonts */
-  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: 'Outfit', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-script: 'Caveat', cursive, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 }
 
@@ -87,9 +88,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: 
-    radial-gradient(at 0% 0%, rgba(2, 132, 199, 0.07) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, rgba(13, 148, 136, 0.06) 0px, transparent 50%),
-    radial-gradient(at 50% 100%, rgba(99, 102, 241, 0.05) 0px, transparent 60%),
+    radial-gradient(at 0% 0%, rgba(2, 132, 199, 0.08) 0px, transparent 55%),
+    radial-gradient(at 100% 0%, rgba(13, 148, 136, 0.08) 0px, transparent 55%),
+    radial-gradient(at 50% 100%, rgba(99, 102, 241, 0.06) 0px, transparent 60%),
     url('/logos/medical-pattern.svg');
   background-size: auto, auto, auto, 40px 40px;
   background-attachment: fixed;
@@ -112,9 +113,9 @@ body {
   background: #94a3b8;
 }
 
-/* Animations */
+/* Animations & Micro-Interactions (Inspired by KishanFlow) */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
+  from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
@@ -123,26 +124,319 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(1deg); }
+}
+
+@keyframes floatReverse {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(8px) rotate(-1deg); }
+}
+
+@keyframes floatFast {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
 @keyframes pulseGlow {
   0%, 100% {
-    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4);
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.45);
     transform: scale(1);
   }
   50% {
-    box-shadow: 0 0 0 10px rgba(220, 38, 38, 0);
+    box-shadow: 0 0 0 12px rgba(220, 38, 38, 0);
     transform: scale(1.02);
+  }
+}
+
+@keyframes pulseGlowRing {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(2, 132, 199, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(2, 132, 199, 0);
   }
 }
 
 @keyframes radarPing {
   0% { transform: scale(0.95); opacity: 0.8; }
-  50% { transform: scale(1.15); opacity: 0.3; }
+  50% { transform: scale(1.25); opacity: 0.2; }
   100% { transform: scale(0.95); opacity: 0.8; }
 }
 
 @keyframes shimmer {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
+}
+
+.animate-float-slow {
+  animation: floatSlow 5s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: floatReverse 6s ease-in-out infinite;
+}
+
+.animate-float-fast {
+  animation: floatFast 3s ease-in-out infinite;
+}
+
+/* Handwritten Note (KishanFlow Style) */
+.handwritten-note {
+  font-family: var(--font-script);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #ea580c;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transform: rotate(-2deg);
+}
+
+/* Gradient Text Utilities */
+.text-gradient-primary {
+  background: linear-gradient(135deg, #0284c7 0%, #0d9488 50%, #4338ca 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-emergency {
+  background: linear-gradient(135deg, #dc2626 0%, #ea580c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* KishanFlow-Themed Role Cards */
+.role-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.role-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: var(--radius-xl);
+  border: 1.5px solid var(--border-light);
+  padding: 22px 18px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
+}
+
+.role-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: transparent;
+  transition: all 0.25s ease;
+}
+
+.role-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 36px -4px rgba(15, 23, 42, 0.12);
+}
+
+/* Theme Blue: Hospital Admin */
+.role-card.theme-blue {
+  background: linear-gradient(180deg, rgba(224, 242, 254, 0.45) 0%, #ffffff 40%);
+}
+.role-card.theme-blue:hover,
+.role-card.theme-blue.active {
+  border-color: #0284c7;
+  box-shadow: 0 14px 34px -4px rgba(2, 132, 199, 0.25);
+}
+.role-card.theme-blue::before,
+.role-card.theme-blue.active::before {
+  background: linear-gradient(90deg, #0284c7, #38bdf8);
+}
+.role-card.theme-blue .role-avatar {
+  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+  color: #0284c7;
+  box-shadow: 0 6px 16px rgba(2, 132, 199, 0.22);
+}
+
+/* Theme Red: Emergency SOS */
+.role-card.theme-red {
+  background: linear-gradient(180deg, rgba(254, 226, 226, 0.45) 0%, #ffffff 40%);
+}
+.role-card.theme-red:hover,
+.role-card.theme-red.active {
+  border-color: #dc2626;
+  box-shadow: 0 14px 34px -4px rgba(220, 38, 38, 0.25);
+}
+.role-card.theme-red::before,
+.role-card.theme-red.active::before {
+  background: linear-gradient(90deg, #dc2626, #f87171);
+}
+.role-card.theme-red .role-avatar {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  color: #dc2626;
+  box-shadow: 0 6px 16px rgba(220, 38, 38, 0.22);
+}
+
+/* Theme Amber: Ambulance Pilot */
+.role-card.theme-amber {
+  background: linear-gradient(180deg, rgba(254, 243, 199, 0.45) 0%, #ffffff 40%);
+}
+.role-card.theme-amber:hover,
+.role-card.theme-amber.active {
+  border-color: #d97706;
+  box-shadow: 0 14px 34px -4px rgba(217, 119, 6, 0.25);
+}
+.role-card.theme-amber::before,
+.role-card.theme-amber.active::before {
+  background: linear-gradient(90deg, #d97706, #fbbf24);
+}
+.role-card.theme-amber .role-avatar {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  color: #d97706;
+  box-shadow: 0 6px 16px rgba(217, 119, 6, 0.22);
+}
+
+/* Theme Teal: Patient OPD */
+.role-card.theme-teal {
+  background: linear-gradient(180deg, rgba(204, 251, 241, 0.45) 0%, #ffffff 40%);
+}
+.role-card.theme-teal:hover,
+.role-card.theme-teal.active {
+  border-color: #0d9488;
+  box-shadow: 0 14px 34px -4px rgba(13, 148, 136, 0.25);
+}
+.role-card.theme-teal::before,
+.role-card.theme-teal.active::before {
+  background: linear-gradient(90deg, #0d9488, #2dd4bf);
+}
+.role-card.theme-teal .role-avatar {
+  background: linear-gradient(135deg, #ccfbf1 0%, #99f6e4 100%);
+  color: #0d9488;
+  box-shadow: 0 6px 16px rgba(13, 148, 136, 0.22);
+}
+
+/* Theme Green: Doctor OPD */
+.role-card.theme-green {
+  background: linear-gradient(180deg, rgba(209, 250, 229, 0.45) 0%, #ffffff 40%);
+}
+.role-card.theme-green:hover,
+.role-card.theme-green.active {
+  border-color: #059669;
+  box-shadow: 0 14px 34px -4px rgba(5, 150, 105, 0.25);
+}
+.role-card.theme-green::before,
+.role-card.theme-green.active::before {
+  background: linear-gradient(90deg, #059669, #34d399);
+}
+.role-card.theme-green .role-avatar {
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  color: #059669;
+  box-shadow: 0 6px 16px rgba(5, 150, 105, 0.22);
+}
+
+/* Role Card Elements */
+.role-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+}
+
+.role-card:hover .role-avatar {
+  transform: scale(1.08) rotate(3deg);
+}
+
+.role-tag {
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  display: inline-block;
+  margin-bottom: 4px;
+}
+
+.role-title {
+  font-size: 1.12rem;
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1.25;
+  margin-bottom: 6px;
+}
+
+.role-desc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.role-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+  border-top: 1px solid rgba(226, 232, 240, 0.7);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.role-card .arrow-icon {
+  transition: transform 0.2s ease;
+}
+
+.role-card:hover .arrow-icon {
+  transform: translateX(4px);
+}
+
+/* Benefit Pill Row (KishanFlow Style) */
+.benefit-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.benefit-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-sm);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-main);
+  transition: all 0.2s ease;
+}
+
+.benefit-chip:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: #cbd5e1;
+}
+
+.benefit-circle {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
 }
 
 .animate-fade-in {

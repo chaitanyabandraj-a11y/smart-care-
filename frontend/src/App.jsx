@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Building2, Shield, HeartPulse, Stethoscope, RefreshCw, CheckCircle2, AlertCircle, Database, AlertOctagon, UserCheck, ShieldAlert, Truck, Users } from 'lucide-react';
+import { Building2, Shield, HeartPulse, Stethoscope, RefreshCw, CheckCircle2, AlertCircle, Database, AlertOctagon, UserCheck, ShieldAlert, Truck, Users, ChevronRight, ArrowRight, Sparkles, Activity, MapPin } from 'lucide-react';
 import { fetchHospitals } from './services/api';
 import HospitalSelector from './components/HospitalSelector';
 import AdminAuthModal from './components/AdminAuthModal';
@@ -13,7 +13,7 @@ import DoctorOpdPortal from './components/doctor/DoctorOpdPortal';
 
 export default function App() {
   // Navigation Module Switcher: 'hospital_admin' | 'emergency_module' | 'ambulance_module' | 'patient_opd' | 'doctor_opd'
-  const [activeModule, setActiveModule] = useState('patient_opd');
+  const [activeModule, setActiveModule] = useState('hospital_admin');
 
   // --- Hospital Admin State ---
   const [hospitals, setHospitals] = useState([]);
@@ -281,7 +281,170 @@ export default function App() {
       </header>
 
       {/* Main Content Area */}
-      <main style={{ flex: 1, padding: '32px 20px', maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
+      <main style={{ flex: 1, padding: '24px 20px 48px 20px', maxWidth: '1240px', margin: '0 auto', width: '100%' }}>
+        
+        {/* ========================================================= */}
+        {/* KISHANFLOW-INSPIRED INTERACTIVE ROLE SWITCHER HUB */}
+        {/* ========================================================= */}
+        <section style={{ marginBottom: '32px' }} aria-label="Platform Module Selector">
+          {/* Benefit / Trust Strip (KishanFlow Style) */}
+          <div className="benefit-row">
+            <div className="benefit-chip">
+              <div className="benefit-circle" style={{ backgroundColor: '#e0f2fe', color: '#0284c7' }}>🏥</div>
+              <span>5 Independent Hospital DBs</span>
+            </div>
+            <div className="benefit-chip">
+              <div className="benefit-circle" style={{ backgroundColor: '#fee2e2', color: '#dc2626' }}>🚨</div>
+              <span>2-Min Sequential SOS Dispatch</span>
+            </div>
+            <div className="benefit-chip">
+              <div className="benefit-circle" style={{ backgroundColor: '#fef3c7', color: '#d97706' }}>🚑</div>
+              <span>50 Live GPS ALS Fleet</span>
+            </div>
+            <div className="benefit-chip">
+              <div className="benefit-circle" style={{ backgroundColor: '#ccfbf1', color: '#0d9488' }}>🎫</div>
+              <span>Zero-Wait OPD QR Tokens</span>
+            </div>
+            <div className="benefit-chip">
+              <div className="benefit-circle" style={{ backgroundColor: '#d1fae5', color: '#059669' }}>🩺</div>
+              <span>Doctor Consultation Desk</span>
+            </div>
+          </div>
+
+          {/* Handwritten Annotation Callout (KishanFlow Style) */}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', marginBottom: '16px' }}>
+            <span className="handwritten-note">
+              ✨ Click any role card to switch instant command module
+            </span>
+            <svg width="32" height="20" viewBox="0 0 40 25" fill="none" style={{ color: '#ea580c' }}>
+              <path d="M2 4C14 1 28 8 36 18M36 18L30 18M36 18L34 11" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </div>
+
+          {/* Interactive Role Cards (Inspired by KishanFlow) */}
+          <div className="role-card-grid">
+            {/* Card 1: Hospital Admin */}
+            <div
+              className={`role-card theme-blue ${activeModule === 'hospital_admin' ? 'active' : ''}`}
+              onClick={() => setActiveModule('hospital_admin')}
+            >
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
+                  <div className="role-avatar">
+                    <Building2 size={24} />
+                  </div>
+                  <span className="badge badge-blue" style={{ fontSize: '0.7rem' }}>5 DBs Live</span>
+                </div>
+                <span className="role-tag" style={{ color: '#0284c7' }}>COMMAND COCKPIT</span>
+                <h3 className="role-title">Hospital Admin Portal</h3>
+                <p className="role-desc">
+                  Manage dedicated SQLite database, real-time ICU & inpatient bed telemetry, on-duty doctors.
+                </p>
+              </div>
+              <div className="role-footer" style={{ color: '#0284c7' }}>
+                <span>{activeModule === 'hospital_admin' ? '● Active Module' : 'Open Admin Portal'}</span>
+                <ArrowRight size={16} className="arrow-icon" />
+              </div>
+            </div>
+
+            {/* Card 2: Emergency SOS */}
+            <div
+              className={`role-card theme-red ${activeModule === 'emergency_module' ? 'active' : ''}`}
+              onClick={() => setActiveModule('emergency_module')}
+            >
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
+                  <div className="role-avatar">
+                    <AlertOctagon size={24} />
+                  </div>
+                  <span className="badge badge-red" style={{ fontSize: '0.7rem' }}>2-Min Ring</span>
+                </div>
+                <span className="role-tag" style={{ color: '#dc2626' }}>CRITICAL RESPONSE</span>
+                <h3 className="role-title">Emergency 1-Tap SOS</h3>
+                <p className="role-desc">
+                  Instant GPS emergency alert with sequential 2-minute ring across nearest 4 super-specialty hospitals.
+                </p>
+              </div>
+              <div className="role-footer" style={{ color: '#dc2626' }}>
+                <span>{activeModule === 'emergency_module' ? '● Active Module' : 'Trigger SOS Alert'}</span>
+                <ArrowRight size={16} className="arrow-icon" />
+              </div>
+            </div>
+
+            {/* Card 3: Ambulance Pilot */}
+            <div
+              className={`role-card theme-amber ${activeModule === 'ambulance_module' ? 'active' : ''}`}
+              onClick={() => setActiveModule('ambulance_module')}
+            >
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
+                  <div className="role-avatar">
+                    <Truck size={24} />
+                  </div>
+                  <span className="badge badge-amber" style={{ fontSize: '0.7rem' }}>50 Fleet</span>
+                </div>
+                <span className="role-tag" style={{ color: '#d97706' }}>FLEET NAVIGATION</span>
+                <h3 className="role-title">Ambulance Pilot Cockpit</h3>
+                <p className="role-desc">
+                  Turn-by-turn routing, live hospital telemetry transmission & instant ER arrival handoff.
+                </p>
+              </div>
+              <div className="role-footer" style={{ color: '#d97706' }}>
+                <span>{activeModule === 'ambulance_module' ? '● Active Module' : 'Launch Pilot Desk'}</span>
+                <ArrowRight size={16} className="arrow-icon" />
+              </div>
+            </div>
+
+            {/* Card 4: Patient OPD */}
+            <div
+              className={`role-card theme-teal ${activeModule === 'patient_opd' ? 'active' : ''}`}
+              onClick={() => setActiveModule('patient_opd')}
+            >
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
+                  <div className="role-avatar">
+                    <Users size={24} />
+                  </div>
+                  <span className="badge badge-teal" style={{ fontSize: '0.7rem' }}>Zero-Wait</span>
+                </div>
+                <span className="role-tag" style={{ color: '#0d9488' }}>DIGITAL ORS QUEUE</span>
+                <h3 className="role-title">Patient OPD Portal</h3>
+                <p className="role-desc">
+                  Self-service QR token generation, department live waitlist queue & digital prescription downloads.
+                </p>
+              </div>
+              <div className="role-footer" style={{ color: '#0d9488' }}>
+                <span>{activeModule === 'patient_opd' ? '● Active Module' : 'Book OPD Token'}</span>
+                <ArrowRight size={16} className="arrow-icon" />
+              </div>
+            </div>
+
+            {/* Card 5: Doctor OPD */}
+            <div
+              className={`role-card theme-green ${activeModule === 'doctor_opd' ? 'active' : ''}`}
+              onClick={() => setActiveModule('doctor_opd')}
+            >
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
+                  <div className="role-avatar">
+                    <Stethoscope size={24} />
+                  </div>
+                  <span className="badge badge-green" style={{ fontSize: '0.7rem' }}>Prescriptions</span>
+                </div>
+                <span className="role-tag" style={{ color: '#059669' }}>CLINICAL DESK</span>
+                <h3 className="role-title">Doctor OPD Portal</h3>
+                <p className="role-desc">
+                  Call patient tokens, issue digital e-prescriptions, view patient diagnostics & vitals history.
+                </p>
+              </div>
+              <div className="role-footer" style={{ color: '#059669' }}>
+                <span>{activeModule === 'doctor_opd' ? '● Active Module' : 'Open Consultation'}</span>
+                <ArrowRight size={16} className="arrow-icon" />
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* ========================================================= */}
         {/* MODULE 1: HOSPITAL ADMIN MODULE */}
         {/* ========================================================= */}
@@ -325,6 +488,67 @@ export default function App() {
                   padding: '36px 36px',
                   color: '#ffffff'
                 }}>
+                  {/* Floating Micro-Badges on Banner (KishanFlow Style) */}
+                  <div style={{
+                    position: 'absolute',
+                    right: '24px',
+                    top: '24px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '10px',
+                    pointerEvents: 'none'
+                  }}>
+                    <div className="animate-float-slow" style={{
+                      backgroundColor: 'rgba(15, 23, 42, 0.82)',
+                      backdropFilter: 'blur(10px)',
+                      border: '1px solid rgba(56, 189, 248, 0.4)',
+                      padding: '6px 14px',
+                      borderRadius: 'var(--radius-full)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      boxShadow: '0 6px 20px rgba(0,0,0,0.35)',
+                      color: '#38bdf8',
+                      fontSize: '0.78rem',
+                      fontWeight: 700
+                    }}>
+                      <span className="status-indicator active"></span>
+                      <span>🫀 Live Bed Telemetry</span>
+                    </div>
+                    <div className="animate-float-reverse" style={{
+                      backgroundColor: 'rgba(15, 23, 42, 0.82)',
+                      backdropFilter: 'blur(10px)',
+                      border: '1px solid rgba(248, 113, 113, 0.4)',
+                      padding: '6px 14px',
+                      borderRadius: 'var(--radius-full)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      boxShadow: '0 6px 20px rgba(0,0,0,0.35)',
+                      color: '#f87171',
+                      fontSize: '0.78rem',
+                      fontWeight: 700
+                    }}>
+                      <span>🚨 2-Min SOS Sequence</span>
+                    </div>
+                    <div className="animate-float-fast" style={{
+                      backgroundColor: 'rgba(15, 23, 42, 0.82)',
+                      backdropFilter: 'blur(10px)',
+                      border: '1px solid rgba(52, 211, 153, 0.4)',
+                      padding: '6px 14px',
+                      borderRadius: 'var(--radius-full)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      boxShadow: '0 6px 20px rgba(0,0,0,0.35)',
+                      color: '#34d399',
+                      fontSize: '0.78rem',
+                      fontWeight: 700
+                    }}>
+                      <span>🔒 5 Isolated SQLite DBs</span>
+                    </div>
+                  </div>
+
                   <div style={{ maxWidth: '680px' }}>
                     <div style={{
                       display: 'inline-flex',
