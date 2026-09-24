@@ -847,40 +847,20 @@ export default function DoctorOpdPortal() {
   // =========================================================================
   if (!authenticatedDoctor) {
     return (
-      <div style={{ maxWidth: '640px', margin: '30px auto' }}>
-        {/* Portal Emblem Banner */}
-        <div style={{
-          backgroundColor: '#ffffff',
-          borderRadius: 'var(--radius-lg)',
-          border: '1.5px solid var(--border-light)',
-          padding: '28px',
-          boxShadow: 'var(--shadow-md)'
-        }}>
-          <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-            <div style={{
-              width: '56px',
-              height: '56px',
-              borderRadius: '50%',
-              backgroundColor: '#e0f2fe',
-              color: 'var(--primary)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              margin: '0 auto 10px auto',
-              fontSize: '1.5rem'
-            }}>
-              ⚕️
-            </div>
-            <div style={{ fontSize: '0.72rem', fontWeight: 800, color: '#0369a1', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-              Ministry of Health & Hospital Network Model
-            </div>
-            <h2 style={{ margin: '3px 0 0 0', fontSize: '1.3rem', fontWeight: 900, color: 'var(--text-main)' }}>
-              Doctor OPD Chamber & Duty Portal
-            </h2>
-            <p style={{ margin: '4px 0 0 0', fontSize: '0.82rem', color: 'var(--text-muted)' }}>
-              Select your hospital to login with your Unique Doctor ID or register as a new consulting specialist to configure your duty schedule.
-            </p>
+      <div className="scenic-auth-wrapper" style={{ backgroundImage: 'url(/images/doctor_consultation_desk.jpg)', margin: '10px auto' }}>
+        <div className="scenic-auth-backdrop"></div>
+        <div className="scenic-auth-card" style={{ maxWidth: authMode === 'REGISTER' ? '680px' : '480px' }}>
+          {/* Top Emblem Logo (Matching Screenshot 2) */}
+          <div className="scenic-auth-emblem" style={{ backgroundColor: '#ecfdf5', border: '2px solid #a7f3d0' }}>
+            <img src="/logos/smartcare.svg" alt="Doctor" style={{ width: '32px', height: '32px' }} />
           </div>
+
+          <h2 className="scenic-auth-title" style={{ color: '#047857' }}>
+            {authMode === 'LOGIN' ? 'Doctor Login' : 'Doctor Registration'}
+          </h2>
+          <p className="scenic-auth-subtitle">
+            {authMode === 'LOGIN' ? 'Access your clinical workspace & OPD queues' : 'Register with your hospital-authorized staff credentials'}
+          </p>
 
           {/* Mode Switcher Tabs */}
           <div style={{
@@ -899,7 +879,7 @@ export default function DoctorOpdPortal() {
                 border: 'none',
                 borderRadius: 'var(--radius-sm)',
                 backgroundColor: authMode === 'LOGIN' ? '#ffffff' : 'transparent',
-                color: authMode === 'LOGIN' ? 'var(--primary)' : '#64748b',
+                color: authMode === 'LOGIN' ? '#047857' : '#64748b',
                 fontWeight: 800,
                 fontSize: '0.84rem',
                 cursor: 'pointer',
@@ -907,7 +887,7 @@ export default function DoctorOpdPortal() {
                 transition: 'all 0.15s ease'
               }}
             >
-              🔑 Doctor Chamber Login
+              Doctor Chamber Login
             </button>
 
             <button
@@ -919,7 +899,7 @@ export default function DoctorOpdPortal() {
                 border: 'none',
                 borderRadius: 'var(--radius-sm)',
                 backgroundColor: authMode === 'REGISTER' ? '#ffffff' : 'transparent',
-                color: authMode === 'REGISTER' ? 'var(--primary)' : '#64748b',
+                color: authMode === 'REGISTER' ? '#047857' : '#64748b',
                 fontWeight: 800,
                 fontSize: '0.84rem',
                 cursor: 'pointer',
@@ -1050,18 +1030,34 @@ export default function DoctorOpdPortal() {
                   disabled={loginLoading}
                   style={{
                     width: '100%',
-                    padding: '12px',
-                    backgroundColor: 'var(--primary)',
+                    padding: '13px',
+                    backgroundColor: '#064e3b',
                     color: '#ffffff',
                     border: 'none',
-                    borderRadius: 'var(--radius-sm)',
-                    fontSize: '0.92rem',
+                    borderRadius: '9999px',
+                    fontSize: '0.95rem',
                     fontWeight: 800,
-                    cursor: loginLoading ? 'not-allowed' : 'pointer'
+                    cursor: loginLoading ? 'not-allowed' : 'pointer',
+                    boxShadow: '0 4px 14px rgba(6, 78, 59, 0.35)',
+                    transition: 'all 0.2s ease',
+                    marginTop: '8px'
                   }}
+                  onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#047857'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = '#064e3b'; }}
                 >
-                  {loginLoading ? 'Verifying Credentials...' : 'Verify Credentials & Open Chamber Desk →'}
+                  {loginLoading ? 'Verifying Credentials...' : 'Login'}
                 </button>
+
+                <div style={{ marginTop: '16px', fontSize: '0.84rem', color: '#64748b' }}>
+                  Don't have an account?{' '}
+                  <button
+                    type="button"
+                    onClick={() => setAuthMode('REGISTER')}
+                    style={{ background: 'none', border: 'none', color: '#047857', fontWeight: 800, cursor: 'pointer', textDecoration: 'underline' }}
+                  >
+                    Register here
+                  </button>
+                </div>
               </form>
             </div>
           )}

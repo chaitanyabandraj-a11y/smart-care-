@@ -101,349 +101,450 @@ export default function App() {
     } catch (_) {}
   };
 
+  // Handle role selection with automatic smooth scroll to details
+  const handleSelectRole = (moduleId) => {
+    setActiveModule(moduleId);
+    setTimeout(() => {
+      const el = document.getElementById('active-portal-container');
+      if (el) {
+        const yOffset = -70;
+        const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+      }
+    }, 120);
+  };
+
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-      {/* Top Main Navbar */}
-      <header style={{
-        backgroundColor: '#ffffff',
-        borderBottom: '1.5px solid var(--border-light)',
-        boxShadow: 'var(--shadow-sm)',
-        position: 'sticky',
-        top: 0,
-        zIndex: 40
-      }}>
-        <div style={{
-          maxWidth: '1200px',
-          margin: '0 auto',
-          padding: '12px 24px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          flexWrap: 'wrap',
-          gap: '14px'
-        }}>
-          {/* Logo & Platform Name */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-            <img 
-              src="/logos/smartcare.svg" 
-              alt="SmartCare Platform" 
-              style={{
-                width: '44px',
-                height: '44px',
-                borderRadius: '14px',
-                objectFit: 'contain',
-                boxShadow: '0 4px 14px rgba(2, 132, 199, 0.35)',
-                flexShrink: 0
-              }} 
-            />
-            <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--text-main)', letterSpacing: '-0.02em' }}>
-                  SmartCare
-                </span>
-                <span className="badge badge-blue">Healthcare Coordination Platform</span>
-              </div>
-              <p style={{ fontSize: '0.74rem', color: 'var(--text-muted)' }}>
-                Decentralized Multi-Hospital Databases & Real-Time Emergency Coordination
-              </p>
-            </div>
-          </div>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: '#fcfaf6' }}>
+      
+      {/* ========================================================= */}
+      {/* KISHANFLOW-STYLE TOP NAVIGATION BAR */}
+      {/* ========================================================= */}
+      <header className="kishan-nav-bar">
+        {/* Left: Logo & Platform Name */}
+        <div 
+          style={{ display: 'flex', alignItems: 'center', gap: '12px', cursor: 'pointer' }}
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        >
+          <img 
+            src="/logos/smartcare.svg" 
+            alt="SmartCare Platform" 
+            style={{
+              width: '40px',
+              height: '40px',
+              borderRadius: '12px',
+              objectFit: 'contain',
+              boxShadow: '0 4px 12px rgba(2, 132, 199, 0.25)'
+            }} 
+          />
+          <span style={{ fontSize: '1.38rem', fontWeight: 900, color: 'var(--text-main)', letterSpacing: '-0.02em' }}>
+            Smart<span style={{ color: '#0284c7' }}>Care</span>
+          </span>
+        </div>
 
-          {/* Module Navigation Tabs */}
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            backgroundColor: 'var(--bg-surface-soft)',
-            padding: '4px',
-            borderRadius: 'var(--radius-md)',
-            gap: '4px'
-          }}>
-            <button
-              type="button"
-              onClick={() => setActiveModule('hospital_admin')}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: '8px 16px',
-                borderRadius: 'var(--radius-sm)',
-                border: 'none',
-                fontSize: '0.86rem',
-                fontWeight: 700,
-                cursor: 'pointer',
-                backgroundColor: activeModule === 'hospital_admin' ? '#ffffff' : 'transparent',
-                color: activeModule === 'hospital_admin' ? 'var(--primary)' : 'var(--text-muted)',
-                boxShadow: activeModule === 'hospital_admin' ? 'var(--shadow-sm)' : 'none',
-                transition: 'all 0.15s ease'
-              }}
-            >
-              <Building2 size={16} />
-              <span>Hospital Admin Module</span>
-            </button>
+        {/* Center: Navigation Links (Matching KishanFlow) */}
+        <nav className="kishan-nav-links">
+          <button 
+            type="button" 
+            className="kishan-nav-link active"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          >
+            Home
+          </button>
+          <button 
+            type="button" 
+            className="kishan-nav-link"
+            onClick={() => {
+              const el = document.getElementById('about-section');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
+            About
+          </button>
+          <button 
+            type="button" 
+            className="kishan-nav-link"
+            onClick={() => {
+              const el = document.getElementById('features-section');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
+            Features
+          </button>
+          <button 
+            type="button" 
+            className="kishan-nav-link"
+            onClick={() => {
+              const el = document.getElementById('contact-section');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
+            Contact
+          </button>
+        </nav>
 
-            <button
-              type="button"
-              onClick={() => setActiveModule('emergency_module')}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: '8px 16px',
-                borderRadius: 'var(--radius-sm)',
-                border: 'none',
-                fontSize: '0.86rem',
-                fontWeight: 700,
-                cursor: 'pointer',
-                backgroundColor: activeModule === 'emergency_module' ? '#ffffff' : 'transparent',
-                color: activeModule === 'emergency_module' ? '#dc2626' : 'var(--text-muted)',
-                boxShadow: activeModule === 'emergency_module' ? 'var(--shadow-sm)' : 'none',
-                transition: 'all 0.15s ease'
-              }}
-            >
-              <AlertOctagon size={16} style={{ color: activeModule === 'emergency_module' ? '#dc2626' : 'inherit' }} />
-              <span>Emergency Module (1-Tap SOS)</span>
-              {activeEmergencyRequest && (
-                <span className="status-indicator active" style={{ backgroundColor: '#dc2626' }} />
-              )}
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setActiveModule('ambulance_module')}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: '8px 16px',
-                borderRadius: 'var(--radius-sm)',
-                border: 'none',
-                fontSize: '0.86rem',
-                fontWeight: 700,
-                cursor: 'pointer',
-                backgroundColor: activeModule === 'ambulance_module' ? '#ffffff' : 'transparent',
-                color: activeModule === 'ambulance_module' ? 'var(--primary)' : 'var(--text-muted)',
-                boxShadow: activeModule === 'ambulance_module' ? 'var(--shadow-sm)' : 'none',
-                transition: 'all 0.15s ease'
-              }}
-            >
-              <Truck size={16} style={{ color: activeModule === 'ambulance_module' ? 'var(--primary)' : 'inherit' }} />
-              <span>Ambulance Driver Module</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setActiveModule('patient_opd')}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: '8px 16px',
-                borderRadius: 'var(--radius-sm)',
-                border: 'none',
-                fontSize: '0.86rem',
-                fontWeight: 700,
-                cursor: 'pointer',
-                backgroundColor: activeModule === 'patient_opd' ? '#ffffff' : 'transparent',
-                color: activeModule === 'patient_opd' ? '#0284c7' : 'var(--text-muted)',
-                boxShadow: activeModule === 'patient_opd' ? 'var(--shadow-sm)' : 'none',
-                transition: 'all 0.15s ease'
-              }}
-            >
-              <Users size={16} style={{ color: activeModule === 'patient_opd' ? '#0284c7' : 'inherit' }} />
-              <span>Patient OPD (ORS)</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setActiveModule('doctor_opd')}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: '8px 16px',
-                borderRadius: 'var(--radius-sm)',
-                border: 'none',
-                fontSize: '0.86rem',
-                fontWeight: 700,
-                cursor: 'pointer',
-                backgroundColor: activeModule === 'doctor_opd' ? '#ffffff' : 'transparent',
-                color: activeModule === 'doctor_opd' ? '#16a34a' : 'var(--text-muted)',
-                boxShadow: activeModule === 'doctor_opd' ? 'var(--shadow-sm)' : 'none',
-                transition: 'all 0.15s ease'
-              }}
-            >
-              <Stethoscope size={16} style={{ color: activeModule === 'doctor_opd' ? '#16a34a' : 'inherit' }} />
-              <span>Doctor OPD Portal</span>
-            </button>
-
-          </div>
+        {/* Right: Slogan (Matching KishanFlow) */}
+        <div className="kishan-nav-slogan" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <span>Better Hospitals</span>
+          <span style={{ color: '#cbd5e1' }}>|</span>
+          <span>Faster Response</span>
+          <span style={{ color: '#cbd5e1' }}>|</span>
+          <span>A Stronger Tomorrow</span>
         </div>
       </header>
 
       {/* Main Content Area */}
-      <main style={{ flex: 1, padding: '24px 20px 48px 20px', maxWidth: '1240px', margin: '0 auto', width: '100%' }}>
+      <main style={{ flex: 1, padding: '24px 24px 48px 24px', maxWidth: '1260px', margin: '0 auto', width: '100%' }}>
         
         {/* ========================================================= */}
-        {/* KISHANFLOW-INSPIRED INTERACTIVE ROLE SWITCHER HUB */}
+        {/* KISHANFLOW-STYLE HERO SECTION (WITH 3D FLOATING ISLAND) */}
         {/* ========================================================= */}
-        <section style={{ marginBottom: '32px' }} aria-label="Platform Module Selector">
-          {/* Benefit / Trust Strip (KishanFlow Style) */}
-          <div className="benefit-row">
-            <div className="benefit-chip">
-              <div className="benefit-circle" style={{ backgroundColor: '#e0f2fe', color: '#0284c7' }}>🏥</div>
-              <span>5 Independent Hospital DBs</span>
+        <section id="about-section" className="kishan-hero-section">
+          {/* Floating Subtle Leaves */}
+          <div className="floating-leaf" style={{ top: '15%', left: '46%', fontSize: '1.2rem' }}>🍃</div>
+          <div className="floating-leaf" style={{ bottom: '25%', left: '42%', animationDelay: '2s', fontSize: '1rem' }}>🍃</div>
+          <div className="floating-leaf" style={{ top: '8%', right: '8%', animationDelay: '3.5s', fontSize: '1.1rem' }}>🍃</div>
+
+          {/* Left Column: Brand, Tagline & CTAs */}
+          <div>
+            {/* Round Emblem Icon */}
+            <div style={{
+              width: '64px',
+              height: '64px',
+              borderRadius: '50%',
+              backgroundColor: '#ffffff',
+              border: '2px solid #e2e8f0',
+              boxShadow: '0 8px 24px rgba(2, 132, 199, 0.16)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginBottom: '16px'
+            }}>
+              <img src="/logos/smartcare.svg" alt="SmartCare Emblem" style={{ width: '38px', height: '38px' }} />
             </div>
-            <div className="benefit-chip">
-              <div className="benefit-circle" style={{ backgroundColor: '#fee2e2', color: '#dc2626' }}>🚨</div>
-              <span>2-Min Sequential SOS Dispatch</span>
+
+            {/* Brand Title */}
+            <h1 style={{
+              fontSize: '3rem',
+              fontWeight: 900,
+              color: 'var(--text-main)',
+              letterSpacing: '-0.03em',
+              lineHeight: 1.1,
+              marginBottom: '12px'
+            }}>
+              Smart <span style={{ color: '#0284c7' }}>Care</span>
+            </h1>
+
+            {/* Tagline with horizontal decorative lines */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '12px',
+              marginBottom: '18px'
+            }}>
+              <div style={{ height: '1.5px', width: '36px', backgroundColor: '#d97706' }} />
+              <span style={{ fontSize: '0.98rem', fontWeight: 700, color: '#d97706', letterSpacing: '0.04em' }}>
+                From Emergency to Recovery
+              </span>
+              <div style={{ height: '1.5px', width: '36px', backgroundColor: '#d97706' }} />
             </div>
-            <div className="benefit-chip">
-              <div className="benefit-circle" style={{ backgroundColor: '#fef3c7', color: '#d97706' }}>🚑</div>
-              <span>50 Live GPS ALS Fleet</span>
-            </div>
-            <div className="benefit-chip">
-              <div className="benefit-circle" style={{ backgroundColor: '#ccfbf1', color: '#0d9488' }}>🎫</div>
-              <span>Zero-Wait OPD QR Tokens</span>
-            </div>
-            <div className="benefit-chip">
-              <div className="benefit-circle" style={{ backgroundColor: '#d1fae5', color: '#059669' }}>🩺</div>
-              <span>Doctor Consultation Desk</span>
+
+            {/* Subtitle Description */}
+            <p style={{
+              fontSize: '1.02rem',
+              color: '#475569',
+              lineHeight: 1.6,
+              maxWidth: '520px',
+              marginBottom: '28px'
+            }}>
+              Connecting hospitals, doctors, patients, and ambulance pilots for a smarter and stronger healthcare ecosystem.
+            </p>
+
+            {/* CTA Pill Buttons (Matching KishanFlow) */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flexWrap: 'wrap' }}>
+              <button
+                type="button"
+                onClick={() => {
+                  const el = document.getElementById('portals-section');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
+                style={{
+                  backgroundColor: '#064e3b',
+                  color: '#ffffff',
+                  fontWeight: 700,
+                  fontSize: '0.95rem',
+                  padding: '12px 28px',
+                  borderRadius: '9999px',
+                  border: 'none',
+                  cursor: 'pointer',
+                  boxShadow: '0 4px 14px rgba(6, 78, 59, 0.3)',
+                  transition: 'all 0.2s ease'
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#047857'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = '#064e3b'; e.currentTarget.style.transform = 'none'; }}
+              >
+                Explore Portals
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  const el = document.getElementById('features-section');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
+                style={{
+                  backgroundColor: '#ffffff',
+                  color: '#0f172a',
+                  fontWeight: 700,
+                  fontSize: '0.95rem',
+                  padding: '12px 28px',
+                  borderRadius: '9999px',
+                  border: '1.5px solid #e2e8f0',
+                  cursor: 'pointer',
+                  boxShadow: 'var(--shadow-sm)',
+                  transition: 'all 0.2s ease'
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#f8fafc'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = '#ffffff'; e.currentTarget.style.transform = 'none'; }}
+              >
+                Learn More
+              </button>
             </div>
           </div>
 
-          {/* Handwritten Annotation Callout (KishanFlow Style) */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', marginBottom: '16px' }}>
-            <span className="handwritten-note">
-              ✨ Click any role card to switch instant command module
-            </span>
-            <svg width="32" height="20" viewBox="0 0 40 25" fill="none" style={{ color: '#ea580c' }}>
-              <path d="M2 4C14 1 28 8 36 18M36 18L30 18M36 18L34 11" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </div>
-
-          {/* Interactive Role Cards (Inspired by KishanFlow) */}
-          <div className="role-card-grid">
-            {/* Card 1: Hospital Admin */}
-            <div
-              className={`role-card theme-blue ${activeModule === 'hospital_admin' ? 'active' : ''}`}
-              onClick={() => setActiveModule('hospital_admin')}
-            >
-              <div>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
-                  <div className="role-avatar">
-                    <Building2 size={24} />
-                  </div>
-                  <span className="badge badge-blue" style={{ fontSize: '0.7rem' }}>5 DBs Live</span>
-                </div>
-                <span className="role-tag" style={{ color: '#0284c7' }}>COMMAND COCKPIT</span>
-                <h3 className="role-title">Hospital Admin Portal</h3>
-                <p className="role-desc">
-                  Manage dedicated SQLite database, real-time ICU & inpatient bed telemetry, on-duty doctors.
-                </p>
-              </div>
-              <div className="role-footer" style={{ color: '#0284c7' }}>
-                <span>{activeModule === 'hospital_admin' ? '● Active Module' : 'Open Admin Portal'}</span>
-                <ArrowRight size={16} className="arrow-icon" />
-              </div>
+          {/* Right Column: 3D Floating Hospital Island & Handwritten Caveat Script */}
+          <div style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}>
+            <div style={{
+              borderRadius: '24px',
+              overflow: 'hidden',
+              boxShadow: '0 25px 50px -12px rgba(15, 23, 42, 0.22)',
+              border: '2.5px solid rgba(255, 255, 255, 0.85)',
+              maxWidth: '460px',
+              width: '100%',
+              backgroundColor: '#ffffff'
+            }}>
+              <img
+                src="/images/floating_hospital_island.jpg"
+                alt="SmartCare 3D Hospital Island"
+                style={{ width: '100%', height: 'auto', display: 'block' }}
+              />
             </div>
 
-            {/* Card 2: Emergency SOS */}
-            <div
-              className={`role-card theme-red ${activeModule === 'emergency_module' ? 'active' : ''}`}
-              onClick={() => setActiveModule('emergency_module')}
-            >
-              <div>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
-                  <div className="role-avatar">
-                    <AlertOctagon size={24} />
-                  </div>
-                  <span className="badge badge-red" style={{ fontSize: '0.7rem' }}>2-Min Ring</span>
-                </div>
-                <span className="role-tag" style={{ color: '#dc2626' }}>CRITICAL RESPONSE</span>
-                <h3 className="role-title">Emergency 1-Tap SOS</h3>
-                <p className="role-desc">
-                  Instant GPS emergency alert with sequential 2-minute ring across nearest 4 super-specialty hospitals.
-                </p>
-              </div>
-              <div className="role-footer" style={{ color: '#dc2626' }}>
-                <span>{activeModule === 'emergency_module' ? '● Active Module' : 'Trigger SOS Alert'}</span>
-                <ArrowRight size={16} className="arrow-icon" />
-              </div>
-            </div>
-
-            {/* Card 3: Ambulance Pilot */}
-            <div
-              className={`role-card theme-amber ${activeModule === 'ambulance_module' ? 'active' : ''}`}
-              onClick={() => setActiveModule('ambulance_module')}
-            >
-              <div>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
-                  <div className="role-avatar">
-                    <Truck size={24} />
-                  </div>
-                  <span className="badge badge-amber" style={{ fontSize: '0.7rem' }}>50 Fleet</span>
-                </div>
-                <span className="role-tag" style={{ color: '#d97706' }}>FLEET NAVIGATION</span>
-                <h3 className="role-title">Ambulance Pilot Cockpit</h3>
-                <p className="role-desc">
-                  Turn-by-turn routing, live hospital telemetry transmission & instant ER arrival handoff.
-                </p>
-              </div>
-              <div className="role-footer" style={{ color: '#d97706' }}>
-                <span>{activeModule === 'ambulance_module' ? '● Active Module' : 'Launch Pilot Desk'}</span>
-                <ArrowRight size={16} className="arrow-icon" />
-              </div>
-            </div>
-
-            {/* Card 4: Patient OPD */}
-            <div
-              className={`role-card theme-teal ${activeModule === 'patient_opd' ? 'active' : ''}`}
-              onClick={() => setActiveModule('patient_opd')}
-            >
-              <div>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
-                  <div className="role-avatar">
-                    <Users size={24} />
-                  </div>
-                  <span className="badge badge-teal" style={{ fontSize: '0.7rem' }}>Zero-Wait</span>
-                </div>
-                <span className="role-tag" style={{ color: '#0d9488' }}>DIGITAL ORS QUEUE</span>
-                <h3 className="role-title">Patient OPD Portal</h3>
-                <p className="role-desc">
-                  Self-service QR token generation, department live waitlist queue & digital prescription downloads.
-                </p>
-              </div>
-              <div className="role-footer" style={{ color: '#0d9488' }}>
-                <span>{activeModule === 'patient_opd' ? '● Active Module' : 'Book OPD Token'}</span>
-                <ArrowRight size={16} className="arrow-icon" />
-              </div>
-            </div>
-
-            {/* Card 5: Doctor OPD */}
-            <div
-              className={`role-card theme-green ${activeModule === 'doctor_opd' ? 'active' : ''}`}
-              onClick={() => setActiveModule('doctor_opd')}
-            >
-              <div>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
-                  <div className="role-avatar">
-                    <Stethoscope size={24} />
-                  </div>
-                  <span className="badge badge-green" style={{ fontSize: '0.7rem' }}>Prescriptions</span>
-                </div>
-                <span className="role-tag" style={{ color: '#059669' }}>CLINICAL DESK</span>
-                <h3 className="role-title">Doctor OPD Portal</h3>
-                <p className="role-desc">
-                  Call patient tokens, issue digital e-prescriptions, view patient diagnostics & vitals history.
-                </p>
-              </div>
-              <div className="role-footer" style={{ color: '#059669' }}>
-                <span>{activeModule === 'doctor_opd' ? '● Active Module' : 'Open Consultation'}</span>
-                <ArrowRight size={16} className="arrow-icon" />
+            {/* Handwritten Script Annotation in Caveat Font */}
+            <div style={{
+              position: 'absolute',
+              top: '10px',
+              right: '-8px',
+              transform: 'rotate(4deg)',
+              pointerEvents: 'none'
+            }}>
+              <div style={{
+                fontFamily: 'var(--font-script)',
+                fontSize: '1.65rem',
+                fontWeight: 700,
+                color: '#b45309',
+                lineHeight: 1.15,
+                textAlign: 'right',
+                textShadow: '0 2px 8px rgba(255, 255, 255, 0.9)'
+              }}>
+                Life-Saving<br />Care Starts with<br />Connection
               </div>
             </div>
           </div>
         </section>
+
+        {/* ========================================================= */}
+        {/* KISHANFLOW-STYLE ROLE CARDS (WITH CHARACTER AVATARS) */}
+        {/* ========================================================= */}
+        <section id="portals-section" style={{ marginBottom: '38px' }} aria-label="Portal Selection">
+          {/* Handwritten prompt matching Screenshot */}
+          <div style={{ textAlign: 'center', marginBottom: '16px' }}>
+            <span style={{
+              fontFamily: 'var(--font-script)',
+              fontSize: '1.35rem',
+              fontWeight: 700,
+              color: '#d97706',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px'
+            }}>
+              ✨ Click any role card to switch instant command module &amp; scroll down to fill details ↓
+            </span>
+          </div>
+
+          <div className="kishan-role-grid">
+            
+            {/* Card 1: Doctor (Green Theme) */}
+            <div
+              className={`kishan-role-card theme-green ${activeModule === 'doctor_opd' ? 'active' : ''}`}
+              onClick={() => handleSelectRole('doctor_opd')}
+            >
+              <div className="role-avatar-wrapper">
+                <img src="/images/avatar_doctor.jpg" alt="Doctor" className="role-avatar-img" />
+              </div>
+              <div className="role-prefix">Login as</div>
+              <h3 className="role-title">Doctor OPD Portal</h3>
+              <p className="role-desc">
+                Call patient tokens, issue digital e-prescriptions, view patient diagnostics &amp; vitals history.
+              </p>
+              <div style={{
+                marginTop: 'auto',
+                paddingTop: '12px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                fontSize: '0.8rem',
+                fontWeight: 700,
+                color: activeModule === 'doctor_opd' ? '#059669' : '#64748b'
+              }}>
+                <span>{activeModule === 'doctor_opd' ? '● Active Module' : 'Open Portal'}</span>
+                <ArrowRight size={14} />
+              </div>
+            </div>
+
+            {/* Card 2: Patient (Blue Theme) */}
+            <div
+              className={`kishan-role-card theme-blue ${activeModule === 'patient_opd' ? 'active' : ''}`}
+              onClick={() => handleSelectRole('patient_opd')}
+            >
+              <div className="role-avatar-wrapper">
+                <img src="/images/avatar_patient.jpg" alt="Patient" className="role-avatar-img" />
+              </div>
+              <div className="role-prefix">Login as</div>
+              <h3 className="role-title">Patient OPD Portal</h3>
+              <p className="role-desc">
+                Self-service QR token generation, department live waitlist queue &amp; digital prescription downloads.
+              </p>
+              <div style={{
+                marginTop: 'auto',
+                paddingTop: '12px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                fontSize: '0.8rem',
+                fontWeight: 700,
+                color: activeModule === 'patient_opd' ? '#0284c7' : '#64748b'
+              }}>
+                <span>{activeModule === 'patient_opd' ? '● Active Module' : 'Book OPD Token'}</span>
+                <ArrowRight size={14} />
+              </div>
+            </div>
+
+            {/* Card 3: Admin (Purple Theme) */}
+            <div
+              className={`kishan-role-card theme-purple ${activeModule === 'hospital_admin' ? 'active' : ''}`}
+              onClick={() => handleSelectRole('hospital_admin')}
+            >
+              <div className="role-avatar-wrapper">
+                <img src="/images/avatar_admin.jpg" alt="Admin" className="role-avatar-img" />
+              </div>
+              <div className="role-prefix">Login as</div>
+              <h3 className="role-title">Hospital Admin Portal</h3>
+              <p className="role-desc">
+                Manage dedicated SQLite database, real-time ICU &amp; inpatient bed telemetry, on-duty doctors.
+              </p>
+              <div style={{
+                marginTop: 'auto',
+                paddingTop: '12px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                fontSize: '0.8rem',
+                fontWeight: 700,
+                color: activeModule === 'hospital_admin' ? '#7c3aed' : '#64748b'
+              }}>
+                <span>{activeModule === 'hospital_admin' ? '● Active Module' : 'Open Admin Portal'}</span>
+                <ArrowRight size={14} />
+              </div>
+            </div>
+
+            {/* Card 4: Ambulance Pilot (Orange Theme) */}
+            <div
+              className={`kishan-role-card theme-orange ${activeModule === 'ambulance_module' ? 'active' : ''}`}
+              onClick={() => handleSelectRole('ambulance_module')}
+            >
+              <div className="role-avatar-wrapper">
+                <img src="/images/avatar_ambulance.jpg" alt="Ambulance Pilot" className="role-avatar-img" />
+              </div>
+              <div className="role-prefix">Login as</div>
+              <h3 className="role-title">Ambulance Pilot Cockpit</h3>
+              <p className="role-desc">
+                Turn-by-turn routing, live hospital telemetry transmission &amp; instant ER arrival handoff.
+              </p>
+              <div style={{
+                marginTop: 'auto',
+                paddingTop: '12px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                fontSize: '0.8rem',
+                fontWeight: 700,
+                color: activeModule === 'ambulance_module' ? '#ea580c' : '#64748b'
+              }}>
+                <span>{activeModule === 'ambulance_module' ? '● Active Module' : 'Launch Pilot Desk'}</span>
+                <ArrowRight size={14} />
+              </div>
+            </div>
+
+            {/* Card 5: Emergency SOS (Red Theme) */}
+            <div
+              className={`kishan-role-card theme-red ${activeModule === 'emergency_module' ? 'active' : ''}`}
+              onClick={() => handleSelectRole('emergency_module')}
+            >
+              <div className="role-avatar-wrapper">
+                <img src="/images/avatar_emergency.jpg" alt="Emergency SOS" className="role-avatar-img" />
+              </div>
+              <div className="role-prefix">Login as</div>
+              <h3 className="role-title">Emergency 1-Tap SOS</h3>
+              <p className="role-desc">
+                Instant GPS emergency alert with sequential 2-minute ring across nearest 4 super-specialty hospitals.
+              </p>
+              <div style={{
+                marginTop: 'auto',
+                paddingTop: '12px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                fontSize: '0.8rem',
+                fontWeight: 700,
+                color: activeModule === 'emergency_module' ? '#dc2626' : '#64748b'
+              }}>
+                <span>{activeModule === 'emergency_module' ? '● Active Module' : 'Trigger SOS Alert'}</span>
+                <ArrowRight size={14} />
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        {/* Benefit / Trust Strip */}
+        <div id="features-section" className="benefit-row" style={{ marginBottom: '32px' }}>
+          <div className="benefit-chip">
+            <div className="benefit-circle" style={{ backgroundColor: '#e0f2fe', color: '#0284c7' }}>🏥</div>
+            <span>5 Independent Hospital DBs</span>
+          </div>
+          <div className="benefit-chip">
+            <div className="benefit-circle" style={{ backgroundColor: '#fee2e2', color: '#dc2626' }}>🚨</div>
+            <span>2-Min Sequential SOS Dispatch</span>
+          </div>
+          <div className="benefit-chip">
+            <div className="benefit-circle" style={{ backgroundColor: '#fef3c7', color: '#d97706' }}>🚑</div>
+            <span>50 Live GPS ALS Fleet</span>
+          </div>
+          <div className="benefit-chip">
+            <div className="benefit-circle" style={{ backgroundColor: '#ccfbf1', color: '#0d9488' }}>🎫</div>
+            <span>Zero-Wait OPD QR Tokens</span>
+          </div>
+          <div className="benefit-chip">
+            <div className="benefit-circle" style={{ backgroundColor: '#d1fae5', color: '#059669' }}>🩺</div>
+            <span>Doctor Consultation Desk</span>
+          </div>
+        </div>
+
+        {/* ========================================================= */}
+        {/* ACTIVE PORTAL WORKSPACE CONTAINER (AUTOMATIC SCROLL TARGET) */}
+        {/* ========================================================= */}
+        <div id="active-portal-container" style={{ scrollMarginTop: '80px', paddingTop: '10px' }}>
 
         {/* ========================================================= */}
         {/* MODULE 1: HOSPITAL ADMIN MODULE */}
@@ -798,18 +899,86 @@ export default function App() {
         <div style={{ display: activeModule === 'doctor_opd' ? 'block' : 'none' }}>
           <DoctorOpdPortal />
         </div>
+        </div> {/* End active-portal-container */}
       </main>
 
-      {/* Footer */}
-      <footer style={{
-        backgroundColor: '#ffffff',
-        borderTop: '1px solid var(--border-light)',
-        padding: '16px 24px',
-        textAlign: 'center',
-        fontSize: '0.78rem',
-        color: 'var(--text-dim)'
-      }}>
-        <span>SmartCare Healthcare Platform · Dedicated Multi-Hospital Databases · Real-Time 2-Minute Sequential Emergency Dispatch</span>
+      {/* ========================================================= */}
+      {/* KISHANFLOW-STYLE FOOTER */}
+      {/* ========================================================= */}
+      <footer id="contact-section" className="kishan-footer">
+        <div className="kishan-footer-content">
+          {/* Col 1: Brand Info */}
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '14px' }}>
+              <img src="/logos/smartcare.svg" alt="SmartCare" style={{ width: '38px', height: '38px', borderRadius: '10px' }} />
+              <span style={{ fontSize: '1.35rem', fontWeight: 900, color: 'var(--text-main)' }}>
+                Smart<span style={{ color: '#0284c7' }}>Care</span>
+              </span>
+            </div>
+            <p style={{ fontSize: '0.86rem', color: '#64748b', lineHeight: 1.6, maxWidth: '340px', marginBottom: '18px' }}>
+              National Decentralized Healthcare Coordination Network. Uniting super-specialty hospitals with dedicated databases, 2-minute golden hour emergency dispatch & digital ORS outpatient queues.
+            </p>
+            <div style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              padding: '6px 14px',
+              borderRadius: '9999px',
+              backgroundColor: '#fee2e2',
+              color: '#dc2626',
+              fontSize: '0.8rem',
+              fontWeight: 800
+            }}>
+              <span className="status-indicator red"></span>
+              <span>24/7 National Emergency Hotline: 108 / 102</span>
+            </div>
+          </div>
+
+          {/* Col 2: Portals */}
+          <div className="kishan-footer-col">
+            <h4>Quick Portals</h4>
+            <ul>
+              <li><a href="#active-portal-container" onClick={() => handleSelectRole('hospital_admin')}>Hospital Admin Cockpit</a></li>
+              <li><a href="#active-portal-container" onClick={() => handleSelectRole('doctor_opd')}>Doctor OPD Consultation</a></li>
+              <li><a href="#active-portal-container" onClick={() => handleSelectRole('patient_opd')}>Patient ORS Booking</a></li>
+              <li><a href="#active-portal-container" onClick={() => handleSelectRole('ambulance_module')}>Ambulance Pilot Desk</a></li>
+              <li><a href="#active-portal-container" onClick={() => handleSelectRole('emergency_module')}>1-Tap Emergency SOS</a></li>
+            </ul>
+          </div>
+
+          {/* Col 3: Connected Hospitals */}
+          <div className="kishan-footer-col">
+            <h4>Connected Hubs</h4>
+            <ul>
+              <li><a href="#active-portal-container" onClick={() => handleSelectRole('hospital_admin')}>AIIMS New Delhi</a></li>
+              <li><a href="#active-portal-container" onClick={() => handleSelectRole('hospital_admin')}>Apollo Hospital</a></li>
+              <li><a href="#active-portal-container" onClick={() => handleSelectRole('hospital_admin')}>Fortis Escorts Heart Inst.</a></li>
+              <li><a href="#active-portal-container" onClick={() => handleSelectRole('hospital_admin')}>Max Super Speciality</a></li>
+              <li><a href="#active-portal-container" onClick={() => handleSelectRole('hospital_admin')}>Lok Nayak Hospital (LNJP)</a></li>
+            </ul>
+          </div>
+
+          {/* Col 4: Platform Standards */}
+          <div className="kishan-footer-col">
+            <h4>Coordination</h4>
+            <ul>
+              <li style={{ fontSize: '0.84rem', color: '#64748b' }}>⚡ 2-Min Sequential Ring Routing</li>
+              <li style={{ fontSize: '0.84rem', color: '#64748b' }}>🔒 Independent SQLite Database Isolation</li>
+              <li style={{ fontSize: '0.84rem', color: '#64748b' }}>🫀 Live Telemetry Bed & ICU Counters</li>
+              <li style={{ fontSize: '0.84rem', color: '#64748b' }}>🎫 Smart QR Outpatient Wait Queues</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Footer Bottom */}
+        <div className="kishan-footer-bottom">
+          <span>© 2026 SmartCare Healthcare Coordination Network. Decentralized Super-Specialty Medical Infrastructure.</span>
+          <div style={{ display: 'flex', gap: '16px' }}>
+            <span>Privacy Policy</span>
+            <span>Terms of Service</span>
+            <span>Security Architecture</span>
+          </div>
+        </div>
       </footer>
     </div>
   );

@@ -233,43 +233,6 @@ export default function AdminAuthModal({ hospital, onAuthSuccess, onBackToSelect
         </button>
       </div>
 
-      {/* 1-Click Demo Credentials Quick Fill */}
-      <div style={{
-        marginBottom: '18px',
-        padding: '10px 14px',
-        backgroundColor: 'rgba(2, 132, 199, 0.06)',
-        border: '1px dashed #38bdf8',
-        borderRadius: 'var(--radius-md)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        flexWrap: 'wrap',
-        gap: '8px'
-      }}>
-        <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
-          <span style={{ fontWeight: 800, color: 'var(--primary)' }}>⚡ Fast Evaluation: </span>
-          <span>Click to auto-populate developer credentials</span>
-        </div>
-        <button
-          type="button"
-          onClick={fillDemoCredentials}
-          className="btn btn-sm"
-          style={{
-            backgroundColor: '#ffffff',
-            border: '1.5px solid #0284c7',
-            color: '#0284c7',
-            fontWeight: 800,
-            fontSize: '0.76rem',
-            padding: '4px 10px',
-            borderRadius: 'var(--radius-full)',
-            cursor: 'pointer',
-            boxShadow: 'var(--shadow-sm)'
-          }}
-        >
-          🔑 Auto-Fill {hospital.name.split(' ')[0]} Admin Credentials
-        </button>
-      </div>
-
       {/* Error & Success Feedback Alerts */}
       {errorMessage && (
         <div className="animate-fade-in" style={{

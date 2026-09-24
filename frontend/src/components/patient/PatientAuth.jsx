@@ -185,38 +185,20 @@ export default function PatientAuth({ onAuthSuccess }) {
   };
 
   return (
-    <div style={{ maxWidth: '520px', margin: '30px auto' }}>
-      <div style={{
-        backgroundColor: '#ffffff',
-        borderRadius: 'var(--radius-lg)',
-        border: '1.5px solid var(--border-light)',
-        padding: '30px',
-        boxShadow: 'var(--shadow-md)'
-      }}>
-        {/* Top Header */}
-        <div style={{ textAlign: 'center', marginBottom: '22px' }}>
-          <div style={{
-            width: '50px',
-            height: '50px',
-            borderRadius: '50%',
-            backgroundColor: '#e0f2fe',
-            color: '#0284c7',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            margin: '0 auto 10px auto',
-            fontSize: '1.3rem',
-            fontWeight: 800
-          }}>
-            🏛️
-          </div>
-          <h2 style={{ margin: 0, fontSize: '1.2rem', fontWeight: 800, color: 'var(--text-main)' }}>
-            Patient OPD Portal Access
-          </h2>
-          <p style={{ margin: '4px 0 0 0', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-            Online Registration System (ORS) · Dedicated Unique Health IDs
-          </p>
+    <div className="scenic-auth-wrapper" style={{ backgroundImage: 'url(/images/hospital_hero_lobby.jpg)', margin: '10px auto' }}>
+      <div className="scenic-auth-backdrop"></div>
+      <div className="scenic-auth-card" style={{ maxWidth: authMode === 'register' && regOtpVerified ? '680px' : '480px' }}>
+        {/* Top Emblem Logo (Matching Screenshot 2) */}
+        <div className="scenic-auth-emblem" style={{ backgroundColor: '#e0f2fe', border: '2px solid #bae6fd' }}>
+          <img src="/logos/smartcare.svg" alt="Patient" style={{ width: '32px', height: '32px' }} />
         </div>
+
+        <h2 className="scenic-auth-title" style={{ color: '#0284c7' }}>
+          {authMode === 'login' ? 'Patient Login' : 'Patient Registration'}
+        </h2>
+        <p className="scenic-auth-subtitle">
+          {authMode === 'login' ? 'Access your digital ORS tokens, appointments & prescriptions' : 'Register for an instant Unique Health ID (UHID)'}
+        </p>
 
         {/* Mode Switcher */}
         <div style={{
@@ -337,15 +319,9 @@ export default function PatientAuth({ onAuthSuccess }) {
                 <button
                   type="submit"
                   disabled={loading}
+                  className="scenic-pill-btn"
                   style={{
-                    width: '100%',
-                    padding: '11px',
-                    backgroundColor: 'var(--primary)',
-                    color: '#ffffff',
-                    border: 'none',
-                    borderRadius: 'var(--radius-sm)',
-                    fontSize: '0.88rem',
-                    fontWeight: 700,
+                    background: 'linear-gradient(135deg, #0284c7 0%, #0369a1 100%)',
                     cursor: loading ? 'not-allowed' : 'pointer'
                   }}
                 >
@@ -401,15 +377,9 @@ export default function PatientAuth({ onAuthSuccess }) {
                 <button
                   type="submit"
                   disabled={loading}
+                  className="scenic-pill-btn"
                   style={{
-                    width: '100%',
-                    padding: '11px',
-                    backgroundColor: 'var(--primary)',
-                    color: '#ffffff',
-                    border: 'none',
-                    borderRadius: 'var(--radius-sm)',
-                    fontSize: '0.88rem',
-                    fontWeight: 700,
+                    background: 'linear-gradient(135deg, #0284c7 0%, #0369a1 100%)',
                     cursor: loading ? 'not-allowed' : 'pointer'
                   }}
                 >
@@ -484,15 +454,9 @@ export default function PatientAuth({ onAuthSuccess }) {
                 <button
                   type="submit"
                   disabled={loading}
+                  className="scenic-pill-btn"
                   style={{
-                    width: '100%',
-                    padding: '11px',
-                    backgroundColor: 'var(--primary)',
-                    color: '#ffffff',
-                    border: 'none',
-                    borderRadius: 'var(--radius-sm)',
-                    fontSize: '0.88rem',
-                    fontWeight: 700,
+                    background: 'linear-gradient(135deg, #0284c7 0%, #0369a1 100%)',
                     cursor: loading ? 'not-allowed' : 'pointer'
                   }}
                 >
@@ -604,15 +568,9 @@ export default function PatientAuth({ onAuthSuccess }) {
                 <button
                   type="submit"
                   disabled={loading}
+                  className="scenic-pill-btn"
                   style={{
-                    width: '100%',
-                    padding: '11px',
-                    backgroundColor: 'var(--primary)',
-                    color: '#ffffff',
-                    border: 'none',
-                    borderRadius: 'var(--radius-sm)',
-                    fontSize: '0.88rem',
-                    fontWeight: 700,
+                    background: 'linear-gradient(135deg, #0284c7 0%, #0369a1 100%)',
                     cursor: loading ? 'not-allowed' : 'pointer'
                   }}
                 >
