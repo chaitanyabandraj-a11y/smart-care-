@@ -141,6 +141,35 @@ export default function EmergencyAuth({ onAuthSuccess }) {
       borderRadius: 'var(--radius-xl)',
       boxShadow: 'var(--shadow-lg)'
     }}>
+      {/* Visual Hospital Emergency Trauma Bay Banner */}
+      <div style={{
+        borderRadius: 'var(--radius-lg)',
+        overflow: 'hidden',
+        height: '135px',
+        backgroundImage: 'linear-gradient(to bottom, rgba(15, 23, 42, 0.35) 0%, rgba(15, 23, 42, 0.88) 100%), url(/images/ambulance_emergency_bay.jpg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        marginBottom: '20px',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'flex-end',
+        padding: '16px',
+        color: '#ffffff',
+        boxShadow: '0 4px 14px rgba(0, 0, 0, 0.15)'
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+          <span className="badge badge-red" style={{ fontSize: '0.7rem', textTransform: 'uppercase' }}>
+            24x7 Critical Trauma Care
+          </span>
+          <span style={{ fontSize: '0.74rem', color: '#fca5a5', fontWeight: 600 }}>
+            5 Trauma Centers Active
+          </span>
+        </div>
+        <div style={{ fontSize: '1.05rem', fontWeight: 800, color: '#ffffff', lineHeight: 1.25 }}>
+          Real-Time Emergency SOS & ALS Ambulance Network
+        </div>
+      </div>
+
       {/* Header */}
       <div style={{ textAlign: 'center', marginBottom: '24px' }}>
         <img 

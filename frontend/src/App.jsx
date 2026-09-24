@@ -310,38 +310,104 @@ export default function App() {
               </div>
             ) : !selectedHospital ? (
               /* Step 1: Hospital Dropdown Selection Portal */
-              <div className="animate-fade-in" style={{ maxWidth: '780px', margin: '0 auto' }}>
-                <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-                  <div style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    padding: '6px 14px',
-                    backgroundColor: 'var(--primary-light)',
-                    borderRadius: 'var(--radius-full)',
-                    color: 'var(--primary)',
-                    fontSize: '0.82rem',
-                    fontWeight: 700,
-                    marginBottom: '14px'
-                  }}>
-                    <Shield size={14} />
-                    <span>Hospital Administration Portal</span>
+              <div className="animate-fade-in" style={{ maxWidth: '980px', margin: '0 auto' }}>
+                {/* Modern Hospital Entrance Showcase Banner */}
+                <div style={{
+                  borderRadius: '24px',
+                  overflow: 'hidden',
+                  marginBottom: '32px',
+                  boxShadow: 'var(--shadow-xl)',
+                  border: '1.5px solid rgba(226, 232, 240, 0.9)',
+                  position: 'relative',
+                  backgroundImage: 'linear-gradient(105deg, rgba(15, 23, 42, 0.92) 0%, rgba(15, 23, 42, 0.78) 55%, rgba(15, 23, 42, 0.45) 100%), url(/images/hospital_hero_lobby.jpg)',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  padding: '36px 36px',
+                  color: '#ffffff'
+                }}>
+                  <div style={{ maxWidth: '680px' }}>
+                    <div style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      padding: '5px 14px',
+                      borderRadius: 'var(--radius-full)',
+                      backgroundColor: 'rgba(56, 189, 248, 0.2)',
+                      border: '1px solid rgba(56, 189, 248, 0.4)',
+                      color: '#38bdf8',
+                      fontSize: '0.78rem',
+                      fontWeight: 800,
+                      marginBottom: '14px',
+                      letterSpacing: '0.04em',
+                      textTransform: 'uppercase'
+                    }}>
+                      <Building2 size={14} /> National Hospital Command Network
+                    </div>
+                    
+                    <h1 style={{
+                      fontSize: '2.1rem',
+                      fontWeight: 800,
+                      color: '#ffffff',
+                      lineHeight: 1.25,
+                      letterSpacing: '-0.02em',
+                      marginBottom: '10px'
+                    }}>
+                      Decentralized Healthcare Coordination Platform
+                    </h1>
+                    
+                    <p style={{
+                      fontSize: '0.94rem',
+                      color: '#cbd5e1',
+                      lineHeight: 1.6,
+                      marginBottom: '20px'
+                    }}>
+                      Interconnecting New Delhi’s top super-specialty hospitals with dedicated independent databases, real-time ICU telemetry, 2-minute sequential emergency routing, and GPS ambulance fleet dispatch.
+                    </p>
+
+                    {/* Live Network Metrics */}
+                    <div style={{
+                      display: 'grid',
+                      gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
+                      gap: '14px',
+                      paddingTop: '16px',
+                      borderTop: '1px solid rgba(255, 255, 255, 0.15)'
+                    }}>
+                      <div>
+                        <div style={{ fontSize: '1.4rem', fontWeight: 800, color: '#38bdf8' }}>1,880+</div>
+                        <div style={{ fontSize: '0.74rem', color: '#94a3b8', textTransform: 'uppercase', fontWeight: 700 }}>Total Inpatient Beds</div>
+                      </div>
+                      <div>
+                        <div style={{ fontSize: '1.4rem', fontWeight: 800, color: '#34d399' }}>50</div>
+                        <div style={{ fontSize: '0.74rem', color: '#94a3b8', textTransform: 'uppercase', fontWeight: 700 }}>ALS Ambulances</div>
+                      </div>
+                      <div>
+                        <div style={{ fontSize: '1.4rem', fontWeight: 800, color: '#fbbf24' }}>450+</div>
+                        <div style={{ fontSize: '0.74rem', color: '#94a3b8', textTransform: 'uppercase', fontWeight: 700 }}>On-Duty Doctors</div>
+                      </div>
+                      <div>
+                        <div style={{ fontSize: '1.4rem', fontWeight: 800, color: '#f87171' }}>&lt; 2 Min</div>
+                        <div style={{ fontSize: '0.74rem', color: '#94a3b8', textTransform: 'uppercase', fontWeight: 700 }}>SOS Dispatch Window</div>
+                      </div>
+                    </div>
                   </div>
-                  <h1 style={{
-                    fontSize: '2rem',
+                </div>
+
+                <div style={{ textAlign: 'center', marginBottom: '24px' }}>
+                  <h2 style={{
+                    fontSize: '1.6rem',
                     fontWeight: 800,
                     color: 'var(--text-main)',
                     letterSpacing: '-0.02em',
-                    marginBottom: '10px'
+                    marginBottom: '8px'
                   }}>
                     Select Your Hospital to Manage
-                  </h1>
-                  <p style={{ fontSize: '0.94rem', color: 'var(--text-muted)', maxWidth: '620px', margin: '0 auto' }}>
-                    Select your hospital from the dropdown below to complete your one-time admin registration or log in directly to your dedicated hospital database.
+                  </h2>
+                  <p style={{ fontSize: '0.92rem', color: 'var(--text-muted)', maxWidth: '620px', margin: '0 auto' }}>
+                    Select your hospital from the dropdown or click on any registered institute card below to access your dedicated database.
                   </p>
                 </div>
 
-                <div style={{ marginBottom: '24px' }}>
+                <div style={{ marginBottom: '32px' }}>
                   <HospitalSelector
                     hospitals={hospitals}
                     selectedHospital={selectedHospital}
@@ -349,6 +415,100 @@ export default function App() {
                     loading={loadingHospitals}
                   />
                 </div>
+
+                {/* Quick Select Interactive Hospital Campus Cards */}
+                {hospitals.length > 0 && (
+                  <div style={{ marginTop: '28px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px' }}>
+                      <h3 style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--text-main)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <Building2 size={18} style={{ color: 'var(--primary)' }} />
+                        <span>Registered Multi-Hospital Institutes ({hospitals.length})</span>
+                      </h3>
+                      <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
+                        Click any hospital to enter management cockpit
+                      </span>
+                    </div>
+
+                    <div style={{
+                      display: 'grid',
+                      gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+                      gap: '16px'
+                    }}>
+                      {hospitals.map((h) => (
+                        <div
+                          key={h.id}
+                          onClick={() => handleSelectHospital(h)}
+                          className="card-glass"
+                          style={{
+                            padding: '18px 20px',
+                            cursor: 'pointer',
+                            borderRadius: 'var(--radius-lg)',
+                            border: '1.5px solid var(--border-light)',
+                            backgroundColor: '#ffffff',
+                            transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'space-between',
+                            gap: '14px'
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.transform = 'translateY(-4px)';
+                            e.currentTarget.style.borderColor = 'var(--primary)';
+                            e.currentTarget.style.boxShadow = 'var(--shadow-xl)';
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.transform = 'none';
+                            e.currentTarget.style.borderColor = 'var(--border-light)';
+                            e.currentTarget.style.boxShadow = 'var(--shadow-md)';
+                          }}
+                        >
+                          <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                            <img
+                              src={`/logos/${h.id}.svg`}
+                              alt={h.name}
+                              style={{ width: '44px', height: '44px', objectFit: 'contain', flexShrink: 0 }}
+                              onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                            />
+                            <div>
+                              <h4 style={{ fontSize: '0.98rem', fontWeight: 800, color: 'var(--text-main)', lineHeight: 1.25 }}>
+                                {h.name}
+                              </h4>
+                              <span style={{ fontSize: '0.74rem', color: 'var(--text-muted)', display: 'block', marginTop: '2px' }}>
+                                {h.address.split(',')[0]}
+                              </span>
+                            </div>
+                          </div>
+
+                          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                            <span className="badge badge-blue" style={{ fontSize: '0.72rem' }}>
+                              🛏️ {h.stats?.availableBeds ?? 0} Beds Free
+                            </span>
+                            <span className="badge badge-teal" style={{ fontSize: '0.72rem' }}>
+                              🩺 {h.stats?.availableDoctors ?? 0} Doctors
+                            </span>
+                            <span className="badge badge-amber" style={{ fontSize: '0.72rem' }}>
+                              ⚡ {h.id}.db
+                            </span>
+                          </div>
+
+                          <div style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                            paddingTop: '10px',
+                            borderTop: '1px solid var(--border-light)',
+                            fontSize: '0.8rem',
+                            fontWeight: 700,
+                            color: 'var(--primary)'
+                          }}>
+                            <span>Enter Database Console</span>
+                            <ChevronRight size={15} />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             ) : !authenticatedAdmin ? (
               /* Step 2: 1-Time Registration / Login Window for Selected Hospital */

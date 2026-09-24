@@ -657,6 +657,45 @@ export default function HospitalDashboard({ hospitalId, admin, onLogout }) {
         )
       )}
 
+      {/* Clinical Facility & ICU Telemetry Status Banner */}
+      <div style={{
+        borderRadius: 'var(--radius-xl)',
+        overflow: 'hidden',
+        height: '135px',
+        backgroundImage: 'linear-gradient(to right, rgba(15, 23, 42, 0.92) 0%, rgba(15, 23, 42, 0.75) 50%, rgba(15, 23, 42, 0.35) 100%), url(/images/hospital_icu_beds.jpg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        marginBottom: '20px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: '24px 32px',
+        color: '#ffffff',
+        boxShadow: 'var(--shadow-lg)'
+      }}>
+        <div>
+          <span className="badge badge-blue" style={{ marginBottom: '6px' }}>
+            Intensive Care & Critical Telemetry
+          </span>
+          <h2 style={{ fontSize: '1.35rem', fontWeight: 800, color: '#ffffff', margin: 0 }}>
+            {hospital.name} Management Cockpit
+          </h2>
+          <p style={{ fontSize: '0.82rem', color: '#cbd5e1', margin: '4px 0 0 0' }}>
+            Direct decentralized synchronization active with {hospital.id}.db
+          </p>
+        </div>
+        <div style={{ display: 'flex', gap: '24px', textAlign: 'right' }}>
+          <div>
+            <div style={{ fontSize: '1.6rem', fontWeight: 900, color: '#38bdf8' }}>{beds?.available_beds ?? 0}</div>
+            <div style={{ fontSize: '0.72rem', color: '#94a3b8', textTransform: 'uppercase', fontWeight: 700 }}>Beds Free</div>
+          </div>
+          <div>
+            <div style={{ fontSize: '1.6rem', fontWeight: 900, color: '#34d399' }}>{doctors?.available_doctors ?? 0}</div>
+            <div style={{ fontSize: '0.72rem', color: '#94a3b8', textTransform: 'uppercase', fontWeight: 700 }}>Doctors On Duty</div>
+          </div>
+        </div>
+      </div>
+
       {/* Top Hospital Header Card */}
       <div className="card-glass" style={{
         padding: '24px 28px',

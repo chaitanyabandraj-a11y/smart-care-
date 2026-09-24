@@ -197,6 +197,30 @@ export default function AmbulanceAuth({ onAuthSuccess }) {
       </div>
 
       <div style={{ padding: '24px 28px' }}>
+        {/* Visual Fleet Command Banner */}
+        <div style={{
+          borderRadius: 'var(--radius-lg)',
+          overflow: 'hidden',
+          height: '135px',
+          backgroundImage: 'linear-gradient(to bottom, rgba(15, 23, 42, 0.35) 0%, rgba(15, 23, 42, 0.88) 100%), url(/images/ambulance_emergency_bay.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          marginBottom: '20px',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'flex-end',
+          padding: '16px',
+          color: '#ffffff',
+          boxShadow: '0 4px 14px rgba(0, 0, 0, 0.15)'
+        }}>
+          <div style={{ fontSize: '0.72rem', color: '#38bdf8', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '2px' }}>
+            GPS Live Telemetry & 10-Driver Hospital Fleet
+          </div>
+          <div style={{ fontSize: '1.05rem', fontWeight: 800, color: '#ffffff', lineHeight: 1.25 }}>
+            Authorized Ambulance Driver Command Cockpit
+          </div>
+        </div>
+
         {/* Base Hospital Selector */}
         <div style={{ marginBottom: '20px' }}>
           <label style={{
